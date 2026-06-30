@@ -3,7 +3,7 @@
   GENERATED ARTIFACT — DO NOT EDIT BY HAND.
   Source of truth: ../../01_Project_Overview.md + ../../docs/*.md
   Companion to 20260630_brief.html (the decision brief) — this file focuses on
-  per-option UI mockups + data models (what the customer sees, pay order, storage).
+  As-Is vs Option A vs Option B as UI mockups + data models (Option C dropped).
   Self-contained: inline CSS + JS only, no external refs. Opens offline.
   Template/house-style mirrored from ../../../01_DISCOVERY_20260630_Coupon_And_Promotion_System/artifacts/html/20260630_brief.html
 -->
@@ -11,7 +11,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>มัดจำ 60% — ตัวอย่างหน้าจอ &amp; โครงสร้างข้อมูล (แต่ละทางเลือก)</title>
+<title>มัดจำ 60% — As-Is vs A vs B (หน้าจอ &amp; โครงสร้างข้อมูล)</title>
 <style>
   :root{
     --bg:#F4F6FA; --ground:#F4F6FA; --surface:#FFFFFF; --surface-2:#EDF1F7;
@@ -103,6 +103,7 @@
   tbody tr:hover td{background:var(--surface-2)}
   td.yes{color:var(--ok);font-weight:600}td.no{color:var(--red);font-weight:600}td.warn{color:var(--yellow);font-weight:600}
   td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+  th.num{text-align:right}
   .table-scroll{overflow-x:auto;border-radius:var(--radius)}
   .gloss{width:100%;border-collapse:collapse;font-size:.82rem}
   .gloss td{padding:.55rem .9rem;border-top:1px solid var(--border);vertical-align:top}
@@ -111,7 +112,7 @@
     padding:.1rem .55rem;border-radius:999px;line-height:1.7;border:1px solid transparent}
   .badge.pick{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
   .badge.lite{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
-  .badge.heavy{background:var(--risk-soft);color:var(--risk);border-color:var(--risk)}
+  .badge.base{background:var(--surface-2);color:var(--muted);border-color:var(--border-2)}
   .note{border-radius:var(--radius);padding:.85rem 1.05rem;margin-top:.9rem;font-size:.84rem;border:1px solid var(--border);border-left-width:3px}
   .note.info{background:var(--blue-soft);border-left-color:var(--blue);color:var(--text)}
   .note.ok{background:var(--ok-soft);border-left-color:var(--ok);color:var(--text)}
@@ -127,7 +128,7 @@
   .col-label{font-size:.68rem;font-weight:800;letter-spacing:.05em;color:var(--muted);text-transform:uppercase;margin-bottom:.55rem;display:flex;align-items:center;gap:.4rem}
   .col-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
   .mock{border:1px solid var(--border-2);border-radius:var(--radius-lg);background:var(--surface);box-shadow:var(--shadow);overflow:hidden}
-  .mock.bad{border-color:var(--risk)}
+  .mock.base{border-style:dashed}
   .mock-bar{background:var(--surface-2);border-bottom:1px solid var(--border);padding:.6rem 1rem;font-size:.76rem;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:space-between;gap:.5rem}
   .mock-bar .tag{font-family:var(--mono);font-size:.64rem;color:var(--muted);font-weight:600}
   .mock-body{padding:1rem 1.1rem}
@@ -135,33 +136,40 @@
   .pill{font-size:.64rem;font-weight:800;letter-spacing:.03em;padding:.15rem .55rem;border-radius:999px;border:1px solid transparent}
   .pill.due{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}
   .pill.conf{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+  .pill.new{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-dim)}
   .pay-group{border:1px solid var(--border);border-radius:var(--radius);padding:.7rem .85rem;margin-bottom:.75rem}
   .pay-group.now{border-color:var(--blue);background:var(--blue-soft)}
   .pay-group.onsite{border-color:var(--warn);background:var(--warn-soft)}
+  .pay-group.flat{border-color:var(--border-2);background:var(--surface-2)}
   .pay-group .gh{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.74rem;font-weight:800;margin-bottom:.5rem}
-  .pay-group.now .gh{color:var(--blue)}.pay-group.onsite .gh{color:var(--warn)}
+  .pay-group.now .gh{color:var(--blue)}.pay-group.onsite .gh{color:var(--warn)}.pay-group.flat .gh{color:var(--text-dim)}
   .pay-group .when{font-size:.62rem;font-weight:600;opacity:.85;font-family:var(--mono)}
   .li{display:flex;justify-content:space-between;gap:1rem;font-size:.8rem;padding:.18rem 0;color:var(--text)}
   .li .amt{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
   .li.sub{color:var(--muted);font-size:.74rem;padding-left:.55rem}
   .li.tot{border-top:1px dashed var(--border-2);margin-top:.3rem;padding-top:.4rem;font-weight:800}
   .li.tot .amt{font-size:.92rem}
+  .li .hl{color:var(--red);font-weight:700}
   .paybtn{display:block;text-align:center;background:var(--blue);color:#fff;border-radius:6px;padding:.5rem;font-size:.8rem;font-weight:700;margin-top:.3rem}
   .paybtn.ghost{background:transparent;color:var(--muted);border:1px dashed var(--border-2);margin-top:.45rem}
   .mock-note{font-size:.7rem;color:var(--muted);padding:.55rem 1.1rem .85rem;border-top:1px dashed var(--border);background:var(--surface)}
-  .mismatch{background:var(--risk-soft);border:1px solid var(--risk);border-radius:6px;padding:.55rem .75rem;font-size:.76rem;color:var(--text);margin-top:.6rem}
-  .mismatch b{color:var(--red)}
   .flow{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;font-size:.74rem;margin:.4rem 0 .2rem}
   .flow .node{background:var(--surface);border:1px solid var(--border-2);border-radius:999px;padding:.3rem .75rem;display:flex;flex-direction:column;line-height:1.3}
   .flow .node small{font-size:.62rem;color:var(--dim);font-family:var(--mono)}
   .flow .node.pay{border-color:var(--blue);color:var(--blue);font-weight:700}
   .flow .node.site{border-color:var(--warn);color:var(--warn);font-weight:700}
+  .flow .node.flat{border-color:var(--border-2);color:var(--text-dim);font-weight:700}
   .flow .node.end{border-style:dashed;color:var(--muted)}
   .flow .arr{color:var(--dim);font-weight:700}
   .flag-y{color:var(--warn);font-weight:700}.flag-n{color:var(--dim);font-weight:600}
   .st-paid{color:var(--ok);font-weight:700}.st-unpaid{color:var(--muted);font-weight:700}
   .new-col{position:relative}
   .new-col::after{content:'ใหม่';position:absolute;top:2px;right:4px;font-size:.5rem;font-weight:800;color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-dim);border-radius:3px;padding:0 .25rem;letter-spacing:.02em}
+  td .same{color:var(--ok);font-weight:600}td .diff{color:var(--accent);font-weight:700}
+  .diff-table td:nth-child(2){background:var(--ok-soft)}
+  [data-theme="dark"] .diff-table td:nth-child(2){background:rgba(79,192,138,.08)}
+  .diff-table td:nth-child(3){background:var(--blue-soft)}
+  [data-theme="dark"] .diff-table td:nth-child(3){background:rgba(90,166,216,.08)}
   @media(max-width:700px){.wrap{padding:0 1rem}.topbar{padding:.65rem 1rem}
     .stats-bar{grid-template-columns:1fr}}
   @media print{:root{--shadow:none}body{background:#fff;font-size:11pt}
@@ -174,21 +182,21 @@
 
 <div class="topbar">
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-    <span class="topbar-id">มัดจำ 60% + ค่าสัตว์/แขกเสริมหน้างาน · Discovery</span>
-    <span class="topbar-title">ตัวอย่างหน้าจอ &amp; โครงสร้างข้อมูล · 2026-06-30</span>
+    <span class="topbar-id">มัดจำ 60% · As-Is vs A vs B · Discovery</span>
+    <span class="topbar-title">หน้าจอ &amp; โครงสร้างข้อมูล · 2026-06-30</span>
   </div>
 </div>
 
 <header class="page-header wrap">
-  <div class="eyebrow">UI &amp; Data Model ต่อทางเลือก · สำหรับ PO / ผู้บริหาร</div>
-  <h1>เลือกทางเลือกไหน — ลูกค้าเห็นยังไง &amp; ระบบเก็บข้อมูลยังไง</h1>
-  <p class="sub">เอกสารพี่น้องของ "สรุปเพื่อการตัดสินใจ" (<a href="20260630_coupon_brief.html">20260630_coupon_brief.html</a>) — เล่มนี้โชว์ <b>หน้าจอจำลอง</b> ที่ลูกค้า/พนักงานจะเห็น (ต้องจ่ายอะไร <b>ก่อน-หลัง</b>) และ <b>โครงสร้างข้อมูล</b> ที่ระบบใช้เก็บ ของแต่ละทางเลือก เน้นทางเลือก <b>A (แนะนำ)</b>.</p>
+  <div class="eyebrow">As-Is เทียบ Option A / B · สำหรับ PO / ผู้บริหาร</div>
+  <h1>วันนี้เป็นยังไง — แล้วทางเลือก A / B ต่างกันตรงไหน</h1>
+  <p class="sub">เอกสารพี่น้องของ "สรุปเพื่อการตัดสินใจ" (<a href="20260630_brief.html">20260630_brief.html</a>) — เล่มนี้เอา <b>ของวันนี้ (As-Is)</b> มาวางข้าง ๆ <b>ทางเลือก A</b> และ <b>ทางเลือก B</b> ให้เห็นทั้ง <b>หน้าจอที่ลูกค้าเห็น</b> (จ่ายอะไรก่อน-หลัง) และ <b>โครงสร้างข้อมูลที่ระบบเก็บ</b>. <i>(ตัดทางเลือก C ออกแล้ว เพราะไม่แนะนำ — หน้าจอกับเงินจริงไม่ตรงกัน)</i></p>
   <div class="chips">
-    <span class="chip">ตัวอย่างที่ใช้: ค่าห้อง <b>฿17,000</b></span>
+    <span class="chip">ตัวอย่าง: ค่าห้อง <b>฿17,000</b></span>
     <span class="chip">+ ค่าแขกเสริม <b>฿1,500</b></span>
     <span class="chip">+ ค่าสัตว์เลี้ยง <b>฿800</b></span>
-    <span class="chip">มัดจำ <b>60%</b> ของค่าห้อง</span>
-    <span class="chip">แนะนำ: <b>ทางเลือก A</b></span>
+    <span class="chip">ยอดเต็ม <b>฿19,300</b></span>
+    <span class="chip">มัดจำ <b>60%</b></span>
   </div>
 </header>
 
@@ -196,27 +204,28 @@
   <nav class="toc" id="toc">
     <a href="#summary">สรุป + ตัวเลขตัวอย่าง</a>
     <a href="#glossary">ศัพท์ (ฉบับย่อ)</a>
+    <a href="#asis">วันนี้ (As-Is)</a>
     <a href="#optionA">ทางเลือก A — แนะนำ</a>
     <a href="#optionB">ทางเลือก B — จ่าย 2 งวดเต็ม</a>
-    <a href="#optionC">ทางเลือก C — เปลี่ยนแค่เลขที่แสดง</a>
-    <a href="#compare">เทียบ UI &amp; Data 3 ทาง</a>
-    <a href="#decisions">ต่อจากนี้</a>
+    <a href="#avsb">A ต่างจาก B ตรงไหน</a>
+    <a href="#compare">เทียบ As-Is / A / B</a>
+    <a href="#next">ต่อจากนี้</a>
   </nav>
 
   <main>
     <section id="summary">
       <div class="stats-bar">
-        <div class="stat"><span class="stat-value">฿19,300</span><span class="stat-label">ยอดเต็มของการจอง</span><span class="stat-detail">ห้อง 17,000 + แขกเสริม 1,500 + สัตว์ 800</span></div>
-        <div class="stat"><span class="stat-value blue">฿10,200</span><span class="stat-label">จ่ายตอนจอง (มัดจำ)</span><span class="stat-detail">60% ของค่าห้องเท่านั้น</span></div>
-        <div class="stat"><span class="stat-value warn">฿9,100</span><span class="stat-label">จ่ายหน้างาน (check-in)</span><span class="stat-detail">ค่าห้องคงเหลือ + แขกเสริม + สัตว์</span></div>
+        <div class="stat"><span class="stat-value">฿11,580</span><span class="stat-label">วันนี้: จ่ายตอนจอง (มัดจำ)</span><span class="stat-detail">60% ของ "ทุกอย่าง" (รวมสัตว์/แขกเสริม)</span></div>
+        <div class="stat"><span class="stat-value blue">฿10,200</span><span class="stat-label">A·B: จ่ายตอนจอง (มัดจำ)</span><span class="stat-detail">60% ของ "ค่าห้อง" เท่านั้น (−1,380)</span></div>
+        <div class="stat"><span class="stat-value warn">฿9,100</span><span class="stat-label">A·B: ย้ายไปจ่ายหน้างาน</span><span class="stat-detail">ค่าห้องคงเหลือ + แขกเสริม + สัตว์</span></div>
       </div>
       <div class="callout">
         <h2>อ่านสั้น ๆ ก่อน</h2>
         <ul>
-          <li><b>หัวใจของเรื่อง:</b> เปลี่ยน "มัดจำ" ให้คิดจาก <b>ค่าห้องอย่างเดียว</b> (ไม่รวมค่าสัตว์/แขกเสริม) แล้วให้จ่ายส่วนที่เหลือ <b>หน้างานตอน check-in</b>.</li>
-          <li><b>ลูกค้าจะเห็น 2 กลุ่มชัด ๆ</b> บนใบสรุปการจอง: กล่องสีฟ้า "จ่ายตอนนี้ (มัดจำ)" และกล่องสีเหลือง "จ่ายหน้างาน".</li>
-          <li><b>ระบบเก็บข้อมูลยังไง:</b> แต่ละยอดคือ "บิลย่อย 1 รายการ" (charge) ทางเลือก A แค่ <b>ติดป้าย "เก็บหน้างาน"</b> (collect_on_site) บนบิลที่ต้องไปเก็บหน้างาน — เพิ่มช่องเดียว ไม่แตะของเดิม.</li>
-          <li><b>ความต่างหลักของ 3 ทางเลือก</b> อยู่ที่ "ระบบเก็บข้อมูล/เก็บเงินจริงต่างกันแค่ไหน" — A เก็บตรงกับที่โชว์, B เพิ่มสถานะ "รอเก็บเงินคงเหลือ", C โชว์เลขใหม่แต่หลังบ้านเก็บเลขเดิม (ไม่ตรง).</li>
+          <li><b>วันนี้ (As-Is):</b> มัดจำ = 60% ของ <b>ทุกอย่างรวมกัน</b> → ลูกค้าจ่ายล่วงหน้า ฿11,580 ซึ่ง <b>มี ฿1,380 ที่เป็นค่าสัตว์/แขกเสริมจ่ายล่วงหน้าไปแล้ว</b> ทั้งที่ยังไม่แน่ว่าจะใช้.</li>
+          <li><b>ทางเลือก A (แนะนำ):</b> มัดจำคิดจาก <b>ค่าห้องอย่างเดียว</b> = ฿10,200 · ค่าสัตว์/แขกเสริม + ค่าห้องที่เหลือ → <b>ติดป้าย "เก็บหน้างาน"</b> ฿9,100. เพิ่มข้อมูลแค่ช่องเดียว ไม่แตะของเดิม.</li>
+          <li><b>ทางเลือก B:</b> <b>ตัวเงินเท่ากับ A เป๊ะ</b> แต่เพิ่ม "ระบบจัดการยอดค้าง" — สถานะ "รอเก็บเงินคงเหลือ" + วันครบกำหนด + แจ้งเตือน + ส่งลิงก์ให้ลูกค้าจ่ายเอง + รองรับ "ยังไม่ยืนยันว่าจะพาสัตว์มา".</li>
+          <li><b>พูดง่าย ๆ:</b> A กับ B เก็บเงิน <b>เท่ากัน</b> — ต่างกันแค่ B "จัดการ/ตามเก็บ" ยอดหน้างานให้เป็นระบบมากกว่า (งานใหญ่กว่า → ทำเป็นเฟส 2).</li>
         </ul>
       </div>
     </section>
@@ -224,13 +233,74 @@
     <section id="glossary">
       <div class="section-head">ศัพท์ที่ใช้ในเล่มนี้ (ฉบับย่อ)</div>
       <div class="table-scroll"><table class="gloss"><tbody>
-        <tr><td>Charge (บิลย่อย)</td><td>1 รายการเงินที่ลูกค้าต้องจ่าย เช่น "บิลมัดจำ", "บิลค่าห้องคงเหลือ", "บิลค่าสัตว์" — ยังไม่ใช่เงินจริง เป็น "สิ่งที่ต้องเก็บ"</td></tr>
-        <tr><td>Deposit base (ฐานคิดมัดจำ)</td><td>"60% ของอะไร" — วันนี้คิดจากทุกอย่างรวมกัน, ทางเลือก A เปลี่ยนเป็น 60% ของ <b>ค่าห้อง</b> เท่านั้น</td></tr>
-        <tr><td>collect_on_site (ป้าย "เก็บหน้างาน")</td><td>สติกเกอร์ติดบนบิลว่า "ก้อนนี้ไปเก็บตอน check-in ที่หน้างาน" — ช่องใหม่ที่ทางเลือก A เพิ่ม (เพิ่มเฉย ๆ ไม่แตะข้อมูลเก่า)</td></tr>
+        <tr><td>Charge (บิลย่อย)</td><td>1 รายการเงินที่ลูกค้าต้องจ่าย เช่น "บิลมัดจำ", "บิลค่าห้องคงเหลือ" — ยังไม่ใช่เงินจริง เป็น "สิ่งที่ต้องเก็บ"</td></tr>
+        <tr><td>Deposit base (ฐานคิดมัดจำ)</td><td>"60% ของอะไร" — วันนี้คิดจากทุกอย่างรวมกัน, A/B เปลี่ยนเป็น 60% ของ <b>ค่าห้อง</b> เท่านั้น</td></tr>
+        <tr><td>collect_on_site (ป้าย "เก็บหน้างาน")</td><td>สติกเกอร์ติดบนบิลว่า "ก้อนนี้ไปเก็บตอน check-in" — ช่องใหม่ที่ A/B เพิ่ม (เพิ่มเฉย ๆ ไม่แตะข้อมูลเก่า)</td></tr>
         <tr><td>status (สถานะบิล)</td><td><span class="st-paid">paid</span> = จ่ายแล้ว · <span class="st-unpaid">unpaid</span> = ยังไม่จ่าย</td></tr>
-        <tr><td>Money ledger (สมุดบัญชีกลาง)</td><td>บันทึกว่าเงินแต่ละก้อนเป็นของใคร (แพลตฟอร์ม/รายได้/ต้องจ่ายเจ้าของบ้าน) — ทั้ง 3 ทางเลือก<b>ไม่แตะ</b>สมุดนี้</td></tr>
-        <tr><td>balance_due (รอเก็บเงินคงเหลือ)</td><td>สถานะการจองแบบใหม่ที่ <b>เฉพาะทางเลือก B</b> เพิ่ม — บอกว่า "ยังมียอดค้างต้องเก็บ + ครบกำหนดวันไหน"</td></tr>
+        <tr><td>balance_due (รอเก็บเงินคงเหลือ)</td><td>สถานะการจองแบบใหม่ที่ <b>เฉพาะทางเลือก B</b> เพิ่ม — บอกว่า "ยังมียอดค้างต้องเก็บ + ครบกำหนดวันไหน" + เตือนลูกค้าได้</td></tr>
+        <tr><td>Money ledger (สมุดบัญชีกลาง)</td><td>บันทึกว่าเงินแต่ละก้อนเป็นของใคร — ทั้ง As-Is/A/B <b>ไม่แตะ</b>สมุดนี้ (เจ้าของบ้านยังได้ค่าสัตว์/แขกเสริมเต็ม)</td></tr>
       </tbody></table></div>
+    </section>
+
+    <!-- ════════ AS-IS ════════ -->
+    <section id="asis">
+      <div class="section-head">วันนี้ (As-Is) — มัดจำคิดจาก "ทุกอย่างรวมกัน" <span class="badge base">ของเดิม</span></div>
+
+      <div class="two-col">
+        <div>
+          <div class="col-label">หน้าจอที่ลูกค้าเห็นตอนนี้</div>
+          <div class="mock base">
+            <div class="mock-bar"><span>สรุปการจอง · Riverside Villa</span><span class="tag">BK-10248</span></div>
+            <div class="mock-body">
+              <div class="pay-group flat">
+                <div class="gh"><span>จ่ายตอนจอง — มัดจำ</span><span class="when">ตอนจอง</span></div>
+                <div class="li"><span>มัดจำ 60%</span><span class="amt">฿11,580</span></div>
+                <div class="li sub"><span>= 60% × (ห้อง 17,000 + แขกเสริม 1,500 + สัตว์ 800)</span><span class="amt"></span></div>
+                <div class="li sub"><span class="hl">ในนี้มีค่าสัตว์/แขกเสริมจ่ายล่วงหน้า ฿1,380</span><span class="amt hl">⚠︎</span></div>
+                <div class="li tot"><span>ต้องจ่ายวันนี้</span><span class="amt">฿11,580</span></div>
+                <span class="paybtn">ชำระมัดจำ ฿11,580</span>
+              </div>
+              <div class="pay-group flat">
+                <div class="gh"><span>คงเหลือ</span><span class="when">ภายหลัง</span></div>
+                <div class="li"><span>ค่าห้องคงเหลือ (มีสัตว์/แขกปนอยู่)</span><span class="amt">฿7,720</span></div>
+                <div class="li tot"><span>ยอดคงเหลือ</span><span class="amt">฿7,720</span></div>
+              </div>
+              <div class="li tot"><span>ยอดเต็มทั้งหมด</span><span class="amt">฿19,300</span></div>
+            </div>
+            <div class="mock-note">ค่าสัตว์/แขกเสริม <b>ไม่ได้แยกเป็นรายการ</b> — ถูกบวกรวมเข้ายอดแล้วหาร 60/40 เข้ามัดจำ+คงเหลือ → ลูกค้าจ่ายล่วงหน้าบางส่วนทั้งที่ยังไม่แน่ว่าจะใช้</div>
+          </div>
+
+          <div class="col-label" style="margin-top:1.1rem">ลำดับการจ่าย (วันนี้)</div>
+          <div class="flow">
+            <span class="node flat">จ่ายมัดจำ<small>฿11,580</small></span>
+            <span class="arr">→</span>
+            <span class="node flat">จ่ายคงเหลือ<small>฿7,720</small></span>
+            <span class="arr">→</span>
+            <span class="node end">check-out</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-label">ระบบเก็บข้อมูลตอนนี้ — ตาราง <code>booking_charges</code></div>
+          <div class="table-scroll"><table>
+            <thead><tr><th>charge (บิลย่อย)</th><th class="num">amount</th><th>status</th></tr></thead>
+            <tbody>
+              <tr><td><b>deposit</b> · มัดจำ</td><td class="num">11,580</td><td><span class="st-paid">paid</span></td></tr>
+              <tr><td><b>room_balance</b> · คงเหลือ</td><td class="num">7,720</td><td><span class="st-unpaid">unpaid</span></td></tr>
+            </tbody>
+          </table></div>
+          <div class="col-label" style="margin-top:.7rem">เบื้องหลัง: ยอดที่เอามาคิดมัดจำ (price breakdown)</div>
+          <div class="table-scroll"><table>
+            <thead><tr><th>รายการราคา</th><th class="num">amount</th><th>เข้าไปอยู่ที่</th></tr></thead>
+            <tbody>
+              <tr><td>ค่าห้อง (package)</td><td class="num">17,000</td><td>แบ่งเข้ามัดจำ + คงเหลือ</td></tr>
+              <tr><td>ค่าแขกเสริม</td><td class="num">1,500</td><td class="no">แบ่งเข้ามัดจำ + คงเหลือ</td></tr>
+              <tr><td>ค่าสัตว์เลี้ยง</td><td class="num">800</td><td class="no">แบ่งเข้ามัดจำ + คงเหลือ</td></tr>
+            </tbody>
+          </table></div>
+          <div class="note bad"><b>ปัญหา:</b> มีแค่ 2 บิล (มัดจำ + คงเหลือ) และ <b>ไม่มีช่องบอกว่า "ก้อนไหนเก็บหน้างาน"</b>. ค่าสัตว์/แขกเสริมถูกหาร 60/40 ปนอยู่ในทั้ง 2 บิล → เก็บล่วงหน้าบางส่วน, เวลาลูกค้าไม่พาสัตว์มา/มาไม่ครบคน ต้องมาคืนเงิน/เถียงกัน.</div>
+        </div>
+      </div>
     </section>
 
     <!-- ════════ OPTION A ════════ -->
@@ -246,7 +316,7 @@
               <div class="pay-group now">
                 <div class="gh"><span>① จ่ายตอนนี้ — มัดจำ</span><span class="when">ตอนจอง</span></div>
                 <div class="li"><span>มัดจำ 60% ของค่าห้อง</span><span class="amt">฿10,200</span></div>
-                <div class="li sub"><span>ค่าห้อง ฿17,000 × 60%</span><span class="amt"></span></div>
+                <div class="li sub"><span>ค่าห้อง ฿17,000 × 60% (ไม่รวมสัตว์/แขก)</span><span class="amt"></span></div>
                 <div class="li tot"><span>ต้องจ่ายวันนี้</span><span class="amt">฿10,200</span></div>
                 <span class="paybtn">ชำระมัดจำ ฿10,200</span>
               </div>
@@ -259,7 +329,7 @@
               </div>
               <div class="li tot"><span>ยอดเต็มทั้งหมด</span><span class="amt">฿19,300</span></div>
             </div>
-            <div class="mock-note">ลูกค้าจ่ายล่วงหน้าน้อยลง (เฉพาะ % ของค่าห้อง) — ค่าสัตว์/แขกเสริมไปจ่ายจริงหน้างานตามจำนวนที่มาจริง</div>
+            <div class="mock-note">มัดจำต่ำลง ฿1,380 (ไม่เก็บค่าสัตว์/แขกเสริมล่วงหน้าแล้ว) — ค่าสัตว์/แขกเสริมไปจ่ายจริงหน้างานตามจำนวนที่มาจริง</div>
           </div>
 
           <div class="col-label" style="margin-top:1.1rem">ลำดับการจ่าย</div>
@@ -268,7 +338,7 @@
             <span class="arr">→</span>
             <span class="node site">จ่ายหน้างาน<small>฿9,100 · check-in</small></span>
             <span class="arr">→</span>
-            <span class="node end">check-out<small>จบ</small></span>
+            <span class="node end">check-out</span>
           </div>
         </div>
 
@@ -283,15 +353,15 @@
               <tr><td><b>pet</b> · ค่าสัตว์เลี้ยง</td><td class="num">800</td><td><span class="flag-y">true</span></td><td><span class="st-unpaid">unpaid</span></td></tr>
             </tbody>
           </table></div>
-          <div class="note ok"><b>เปลี่ยนจากเดิมแค่:</b> (1) สูตรคิด <code>deposit</code> ให้คูณจาก <b>ค่าห้องอย่างเดียว</b> · (2) เพิ่มช่อง <code>collect_on_site</code> (1 คอลัมน์ใหม่ ค่าเริ่มต้น false → ของเก่าไม่กระทบ). สมุดบัญชีกลาง/การจ่ายเจ้าของบ้าน/ภาษี <b>ไม่แตะ</b>.</div>
-          <div class="note info"><b>หน้างานทำงานยังไง:</b> พนักงานกด "เก็บเงินแล้ว" บนหน้าจอรับเงินเดิม → บิลที่ติดป้าย <code>collect_on_site</code> เปลี่ยน status เป็น <span class="st-paid">paid</span> และลงสมุดบัญชีตอนนั้น (เจ้าของบ้านได้ค่าสัตว์/แขกเสริมเต็ม ไม่โดนหักค่าธรรมเนียม).</div>
+          <div class="note ok"><b>ต่างจาก As-Is แค่ 2 จุด:</b> (1) สูตรคิด <code>deposit</code> คูณจาก <b>ค่าห้องอย่างเดียว</b> · (2) เพิ่มช่อง <code>collect_on_site</code> + แยกค่าสัตว์/แขกเสริมเป็นบิลของตัวเอง (เก็บหน้างาน 100%). สมุดบัญชีกลาง/ภาษี/การจ่ายเจ้าของบ้าน <b>ไม่แตะ</b>.</div>
+          <div class="note info"><b>หน้างานทำงานยังไง:</b> พนักงานกด "เก็บเงินแล้ว" บนหน้าจอรับเงินเดิม → บิลที่ติดป้าย <code>collect_on_site</code> เปลี่ยน status เป็น <span class="st-paid">paid</span> และลงบัญชีตอนนั้น. <b>ไม่มีวันครบกำหนด/ไม่มีแจ้งเตือนอัตโนมัติ</b> — เก็บเมื่อลูกค้ามาถึง.</div>
         </div>
       </div>
     </section>
 
     <!-- ════════ OPTION B ════════ -->
     <section id="optionB">
-      <div class="section-head">ทางเลือก B — จ่าย 2 งวดเต็มรูปแบบ (มี "รอเก็บเงินคงเหลือ") <span class="badge lite">เฟส 2</span></div>
+      <div class="section-head">ทางเลือก B — จ่าย 2 งวดเต็มรูปแบบ (มีระบบ "รอเก็บเงินคงเหลือ") <span class="badge lite">เฟส 2</span></div>
 
       <div class="two-col">
         <div>
@@ -302,6 +372,7 @@
               <div class="statusrow">
                 <span class="pill conf">ยืนยันแล้ว</span>
                 <span class="pill due">รอเก็บเงินคงเหลือ · ครบกำหนด 25 ก.ค.</span>
+                <span class="pill new">เพิ่มจาก A</span>
               </div>
               <div class="pay-group now">
                 <div class="gh"><span>① จ่ายแล้ว — มัดจำ</span><span class="when">12 ก.ค.</span></div>
@@ -312,12 +383,12 @@
                 <div class="gh"><span>② ยอดค้าง — เก็บหน้างาน</span><span class="when">ก่อน/ตอน check-in</span></div>
                 <div class="li"><span>ค่าห้องส่วนที่เหลือ</span><span class="amt">฿6,800</span></div>
                 <div class="li"><span>ค่าแขกเสริม</span><span class="amt">฿1,500</span></div>
-                <div class="li"><span>ค่าสัตว์เลี้ยง</span><span class="amt">฿800</span></div>
+                <div class="li"><span>ค่าสัตว์เลี้ยง <span style="color:var(--accent)">(ยังไม่ยืนยัน — แก้ทีหลังได้)</span></span><span class="amt">฿800</span></div>
                 <div class="li tot"><span>ยอดค้างชำระ</span><span class="amt">฿9,100</span></div>
-                <span class="paybtn ghost">ส่งลิงก์ชำระ / บันทึกรับเงินหน้างาน</span>
+                <span class="paybtn ghost">ส่งลิงก์ชำระให้ลูกค้า / บันทึกรับเงินหน้างาน</span>
               </div>
             </div>
-            <div class="mock-note">เพิ่มจาก A: ป้ายสถานะ "รอเก็บเงินคงเหลือ" + วันครบกำหนด + แจ้งเตือนลูกค้า + รองรับ "ยังไม่ยืนยันว่าจะพาสัตว์มา → ค่อยยืนยันทีหลัง"</div>
+            <div class="mock-note"><b>ส่วนที่ "เพิ่มจาก A"</b> = ป้ายสถานะ "รอเก็บเงินคงเหลือ" + วันครบกำหนด + แจ้งเตือนลูกค้า + ปุ่มส่งลิงก์จ่ายเอง + แก้/ยืนยันค่าสัตว์ทีหลังได้</div>
           </div>
 
           <div class="col-label" style="margin-top:1.1rem">ลำดับการจ่าย</div>
@@ -326,14 +397,14 @@
             <span class="arr">→</span>
             <span class="node site">เตือนก่อนครบกำหนด<small>balance due</small></span>
             <span class="arr">→</span>
-            <span class="node site">เก็บยอดค้าง<small>฿9,100 · check-in</small></span>
+            <span class="node site">เก็บยอดค้าง<small>฿9,100</small></span>
             <span class="arr">→</span>
             <span class="node end">check-out</span>
           </div>
         </div>
 
         <div>
-          <div class="col-label">ระบบเก็บข้อมูลยังไง — เหมือน A + ข้อมูลระดับการจอง</div>
+          <div class="col-label">ระบบเก็บข้อมูลยังไง — บิลเหมือน A เป๊ะ + ข้อมูลระดับการจอง</div>
           <div class="table-scroll"><table>
             <thead><tr><th>charge (บิลย่อย)</th><th class="num">amount</th><th>collect_on_site</th><th>status</th></tr></thead>
             <tbody>
@@ -343,89 +414,70 @@
               <tr><td><b>pet</b></td><td class="num">800</td><td><span class="flag-y">true</span></td><td><span class="st-unpaid">unpaid</span></td></tr>
             </tbody>
           </table></div>
-          <div class="table-scroll" style="margin-top:.6rem"><table>
-            <thead><tr><th>ระดับการจอง (booking) — ฟิลด์ใหม่</th><th>ค่า</th></tr></thead>
+          <div class="col-label" style="margin-top:.7rem">เพิ่มจาก A: ฟิลด์ระดับการจอง (booking)</div>
+          <div class="table-scroll"><table>
+            <thead><tr><th>ฟิลด์ใหม่ (ไม่มีใน A)</th><th>ตัวอย่างค่า</th></tr></thead>
             <tbody>
               <tr><td class="new-col"><b>payment_status</b> · สถานะการจ่าย</td><td><span class="flag-y">balance_due</span> (รอเก็บคงเหลือ)</td></tr>
               <tr><td class="new-col"><b>balance_due_date</b> · วันครบกำหนด</td><td>2026-07-25</td></tr>
               <tr><td class="new-col"><b>balance_amount</b> · ยอดค้าง</td><td>9,100</td></tr>
             </tbody>
           </table></div>
-          <div class="note warn"><b>ทำไมงานใหญ่กว่า A:</b> ต้องเพิ่ม "สถานะการจองแบบใหม่" (รอเก็บเงินคงเหลือ) + ระบบวันครบกำหนด + แจ้งเตือน + ทดสอบเรื่องเงินกว้างขึ้น → จึงเสนอทำเป็น <b>เฟส 2</b> หลัง A พิสูจน์แล้วว่าเก็บเงินหน้างานได้จริง.</div>
+          <div class="note warn"><b>ทำไมงานใหญ่กว่า A:</b> บิลเงิน (charges) เหมือน A ทุกบรรทัด — แต่ B ต้อง <b>สร้างสถานะการจองแบบใหม่ + ระบบวันครบกำหนด + แจ้งเตือน + ทดสอบเรื่องเงินกว้างขึ้น</b> → จึงเสนอทำเป็น <b>เฟส 2</b> หลัง A พิสูจน์แล้วว่าเก็บเงินหน้างานได้จริง.</div>
         </div>
       </div>
     </section>
 
-    <!-- ════════ OPTION C ════════ -->
-    <section id="optionC">
-      <div class="section-head">ทางเลือก C — เปลี่ยนแค่ "เลขที่แสดง" บนหน้าจอ (ไม่แตะหลังบ้าน) <span class="badge heavy">ไม่แนะนำ</span></div>
-
-      <div class="two-col">
-        <div>
-          <div class="col-label">หน้าจอที่ลูกค้าเห็น (แต่หลังบ้านไม่ตรง)</div>
-          <div class="mock bad">
-            <div class="mock-bar"><span>สรุปการจอง · Riverside Villa</span><span class="tag">BK-10248</span></div>
-            <div class="mock-body">
-              <div class="pay-group now">
-                <div class="gh"><span>จ่ายตอนนี้ — มัดจำ</span><span class="when">ตอนจอง</span></div>
-                <div class="li"><span>มัดจำ (ที่ "แสดง")</span><span class="amt">฿10,200</span></div>
-                <span class="paybtn">ชำระมัดจำ ฿10,200</span>
-              </div>
-              <div class="mismatch">⚠️ <b>แต่ระบบรูดบัตร/เก็บเงินจริง ฿11,580</b> (เพราะหลังบ้านยังคิด 60% ของ "ทุกอย่าง" = 60% × 19,300) — <b>ต่างจากที่ลูกค้าเห็น ฿1,380</b></div>
-            </div>
-            <div class="mock-note">ลูกค้าเห็นเลขนึง แต่ถูกตัดเงินอีกเลข → สับสน, ร้องเรียน, บัญชีไม่ตรงเจตนา และสุดท้ายต้องกลับมาทำ A อยู่ดี</div>
-          </div>
-
-          <div class="col-label" style="margin-top:1.1rem">ลำดับการจ่าย</div>
-          <div class="flow">
-            <span class="node pay">เก็บ ฿11,580<small>(แต่โชว์ 10,200)</small></span>
-            <span class="arr">→</span>
-            <span class="node site">เก็บคงเหลือ ฿7,720<small>(รวมสัตว์/แขกอยู่แล้ว)</small></span>
-            <span class="arr">→</span>
-            <span class="node end">check-out</span>
-          </div>
-        </div>
-
-        <div>
-          <div class="col-label">ระบบเก็บข้อมูลยังไง — <b>เหมือนเดิมทุกอย่าง</b> (ไม่เปลี่ยน)</div>
-          <div class="table-scroll"><table>
-            <thead><tr><th>charge (บิลย่อย)</th><th class="num">amount</th><th>หมายเหตุ</th></tr></thead>
-            <tbody>
-              <tr><td><b>deposit</b> · มัดจำ</td><td class="num">11,580</td><td class="no">60% ของทุกอย่าง (รวมสัตว์/แขก)</td></tr>
-              <tr><td><b>room_balance</b> · คงเหลือ</td><td class="num">7,720</td><td>ส่วนที่เหลือ (มีสัตว์/แขกปนอยู่)</td></tr>
-            </tbody>
-          </table></div>
-          <div class="note bad"><b>ปัญหาหลัก:</b> ไม่มีช่อง <code>collect_on_site</code>, ค่าสัตว์/แขกเสริมยัง "ถูกเก็บล่วงหน้า" ปนอยู่ในมัดจำ+คงเหลือเหมือนเดิม. หน้าจอแค่ "พูดอีกอย่าง" → <b>ตัวเลขที่แสดงกับเงินจริงไม่ตรงกัน</b> = หนี้เทคนิคที่ต้องรื้อทำใหม่.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════ COMPARE ════════ -->
-    <section id="compare">
-      <div class="section-head">เทียบ UI &amp; Data Model ทั้ง 3 ทาง</div>
-      <div class="table-scroll"><table>
-        <thead><tr><th>มุมมอง</th><th>A — มัดจำจากค่าห้อง + ป้ายหน้างาน</th><th>B — จ่าย 2 งวดเต็ม</th><th>C — เปลี่ยนแค่เลขที่แสดง</th></tr></thead>
+    <!-- ════════ A vs B DIFF ════════ -->
+    <section id="avsb">
+      <div class="section-head">A ต่างจาก B ตรงไหน (ดูชัด ๆ)</div>
+      <div class="note ok" style="margin-top:0;margin-bottom:1rem"><b>เหมือนกันเป๊ะ:</b> ยอดมัดจำ ฿10,200 · ยอดหน้างาน ฿9,100 · บิลทั้ง 4 รายการ + ป้าย <code>collect_on_site</code> · สมุดบัญชี/ภาษี/การจ่ายเจ้าของบ้าน. <b>เก็บเงินเท่ากันทุกบาท</b> — ต่างกันแค่ "วิธีจัดการ/ตามเก็บยอดหน้างาน".</div>
+      <div class="table-scroll"><table class="diff-table">
+        <thead><tr><th>สิ่งที่ต่างกัน</th><th>A — ติดป้ายเก็บหน้างาน</th><th>B — จ่าย 2 งวดเต็ม</th></tr></thead>
         <tbody>
-          <tr><td>ลูกค้าจ่ายตอนจอง</td><td class="yes">฿10,200 (มัดจำค่าห้อง)</td><td class="yes">฿10,200 (มัดจำค่าห้อง)</td><td class="no">โชว์ ฿10,200 แต่ตัดจริง ฿11,580</td></tr>
-          <tr><td>ค่าสัตว์/แขกเสริม</td><td class="yes">เก็บหน้างาน 100%</td><td class="yes">เก็บหน้างาน 100%</td><td class="no">ยังเก็บล่วงหน้า (ปนในมัดจำ)</td></tr>
-          <tr><td>หน้าจอแยก "ตอนนี้/หน้างาน"</td><td class="yes">มี ชัดเจน</td><td class="yes">มี + สถานะค้างชำระ</td><td class="warn">มี (แต่ตัวเลขลวง)</td></tr>
-          <tr><td>เปลี่ยนโครงสร้างข้อมูล</td><td class="yes">+1 ช่อง (collect_on_site)</td><td class="warn">+1 ช่อง + ฟิลด์สถานะการจอง</td><td class="yes">ไม่เปลี่ยน</td></tr>
-          <tr><td>ตัวเลขหน้าจอ = เงินจริง</td><td class="yes">ตรง</td><td class="yes">ตรง</td><td class="no">ไม่ตรง</td></tr>
-          <tr><td>ขนาดงาน</td><td class="yes">ปานกลาง (M)</td><td class="no">ใหญ่ (L)</td><td class="yes">เล็ก (S)</td></tr>
-          <tr><td>ตอบโจทย์ธุรกิจ</td><td class="yes">เต็ม</td><td class="yes">เต็ม + ยืดหยุ่น</td><td class="no">ไม่จริง (หลอกตา)</td></tr>
+          <tr><td>ยอดเงิน (มัดจำ / หน้างาน)</td><td><span class="same">฿10,200 / ฿9,100</span></td><td><span class="same">฿10,200 / ฿9,100 (เท่ากัน)</span></td></tr>
+          <tr><td>บิล + ป้าย collect_on_site</td><td><span class="same">มี</span></td><td><span class="same">เหมือน A เป๊ะ</span></td></tr>
+          <tr><td>สถานะการจอง "รอเก็บเงินคงเหลือ"</td><td class="no">ไม่มี (บิลแค่ unpaid + ติดป้าย)</td><td><span class="diff">มี (balance_due)</span></td></tr>
+          <tr><td>วันครบกำหนดจ่ายส่วนที่เหลือ</td><td class="no">ไม่มี</td><td><span class="diff">มี (balance_due_date)</span></td></tr>
+          <tr><td>แจ้งเตือนลูกค้าให้มาจ่าย</td><td class="no">ไม่มี (อัตโนมัติ)</td><td><span class="diff">มี (เตือนก่อนครบกำหนด)</span></td></tr>
+          <tr><td>ส่งลิงก์ให้ลูกค้าจ่ายเอง</td><td class="no">ไม่มี — พนักงานเก็บหน้างาน</td><td><span class="diff">มี (payment link)</span></td></tr>
+          <tr><td>"ยังไม่ยืนยันว่าจะพาสัตว์มา"</td><td class="warn">ต้องระบุตอนจอง</td><td><span class="diff">ยืนยัน/แก้ทีหลังได้</span></td></tr>
+          <tr><td>งานหน้างานของพนักงาน</td><td>กดรับเงินบนหน้าจอเดิม</td><td>เหมือน A + จัดการสถานะค้างชำระ</td></tr>
+          <tr><td>ต้องสร้างใหม่ในระบบ</td><td class="yes">ช่อง collect_on_site + แก้สูตร</td><td class="warn">+ สถานะการจอง + วันครบกำหนด + แจ้งเตือน</td></tr>
+          <tr><td>ขนาดงาน</td><td class="yes">ปานกลาง (M)</td><td class="no">ใหญ่ (L)</td></tr>
+          <tr><td>เมื่อไหร่ควรทำ</td><td class="yes">ทำก่อน (เฟส 1)</td><td class="warn">ทำทีหลัง (เฟส 2) ถ้าต้องการ</td></tr>
         </tbody>
       </table></div>
-      <div class="note ok"><b>สรุป:</b> ทางเลือก A ให้ "หน้าจอที่ตรงกับเงินจริง" ด้วยการเพิ่มข้อมูลแค่ช่องเดียว — ได้ผลเต็มโดยเสี่ยงน้อย และต่อยอดเป็น B (จ่าย 2 งวดเต็ม) ได้ภายหลังโดยไม่ต้องรื้อ. C ตัดทิ้งเพราะตัวเลขหน้าจอไม่ตรงเงินจริง.</div>
+      <div class="note info"><b>สรุปจุดต่าง:</b> A = "ติดป้ายว่ายอดนี้เก็บหน้างาน" แล้วพนักงานเก็บเองตอนลูกค้ามา (เรียบง่าย). B = "ระบบจัดการยอดค้างให้" — มีสถานะ, วันครบกำหนด, เตือน, ส่งลิงก์, แก้สัตว์ทีหลังได้ (เหมือนเว็บจองใหญ่ ๆ). <b>เริ่มที่ A ก่อน แล้วต่อยอดเป็น B ได้โดยไม่ต้องรื้อ</b> เพราะโครงบิล + ป้ายเก็บหน้างานมีอยู่แล้ว.</div>
     </section>
 
-    <section id="decisions">
+    <!-- ════════ COMPARE 3-WAY ════════ -->
+    <section id="compare">
+      <div class="section-head">เทียบ As-Is / A / B</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>มุมมอง</th><th>วันนี้ (As-Is)</th><th>A — แนะนำ</th><th>B — เฟส 2</th></tr></thead>
+        <tbody>
+          <tr><td>มัดจำคิดจาก</td><td class="no">ทุกอย่างรวมกัน</td><td class="yes">ค่าห้องอย่างเดียว</td><td class="yes">ค่าห้องอย่างเดียว</td></tr>
+          <tr><td>ลูกค้าจ่ายตอนจอง</td><td class="no">฿11,580 (สูง)</td><td class="yes">฿10,200</td><td class="yes">฿10,200</td></tr>
+          <tr><td>ค่าสัตว์/แขกเสริม</td><td class="no">จ่ายล่วงหน้าบางส่วน (60/40)</td><td class="yes">เก็บหน้างาน 100%</td><td class="yes">เก็บหน้างาน 100%</td></tr>
+          <tr><td>แยก "จ่ายตอนนี้ / หน้างาน"</td><td class="no">ไม่แยก</td><td class="yes">แยกชัด</td><td class="yes">แยกชัด + สถานะค้างชำระ</td></tr>
+          <tr><td>บิลค่าสัตว์/แขกเสริมแยกบิล</td><td class="no">ไม่แยก (ปนในมัดจำ+คงเหลือ)</td><td class="yes">แยกบิล + ป้ายหน้างาน</td><td class="yes">แยกบิล + ป้ายหน้างาน</td></tr>
+          <tr><td>วันครบกำหนด + แจ้งเตือน</td><td class="no">ไม่มี</td><td class="no">ไม่มี</td><td class="yes">มี</td></tr>
+          <tr><td>เปลี่ยนโครงสร้างข้อมูล</td><td>—</td><td class="yes">+1 ช่อง (collect_on_site)</td><td class="warn">+1 ช่อง + ฟิลด์สถานะการจอง</td></tr>
+          <tr><td>ขนาดงาน</td><td>— (ของเดิม)</td><td class="yes">ปานกลาง (M)</td><td class="no">ใหญ่ (L)</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note ok"><b>สรุป:</b> จาก As-Is → A คือ "ขยับฐานคิดมัดจำ + แยกค่าสัตว์/แขกเสริมไปเก็บหน้างาน" (งานปานกลาง, เสี่ยงน้อย, เก็บเงินตรงเจตนา). A → B คือ "เพิ่มระบบตามเก็บยอดค้างให้อัตโนมัติ" (งานใหญ่, ทำเป็นเฟส 2 เมื่อต้องการ).</div>
+    </section>
+
+    <section id="next">
       <div class="section-head">ต่อจากนี้</div>
       <div class="callout">
         <h2>เอกสารที่เกี่ยวข้อง</h2>
         <ul>
-          <li><b><a href="20260630_coupon_brief.html">สรุปเพื่อการตัดสินใจ (decision brief)</a></b> — ทางเลือก/ข้อแลกเปลี่ยน/ความเสี่ยง/สิ่งที่ต้องตัดสินใจ ฉบับเต็ม</li>
-          <li>รายละเอียดเชิงเทคนิค: <code>docs/03_Impact_Analysis.md</code> (จุดที่ต้องแก้) · <code>docs/04_Technical_Assessment.md</code> · <code>docs/05_Implementation_Plan.md</code> (แผนทำเป็นเฟส)</li>
-          <li><b>คำถามที่ต้องตอบก่อนเริ่ม (ดูใน brief):</b> มัดจำคิดจากค่าห้องอย่างเดียวหรือรวมค่าธรรมเนียม · ภาษีคิดจากยอดเต็มหรือมัดจำ · ใครกดบันทึก "เก็บเงินหน้างานแล้ว" · การจองที่จองไปแล้วจัดการยังไง</li>
+          <li><b><a href="20260630_brief.html">สรุปเพื่อการตัดสินใจ (decision brief)</a></b> — ทางเลือก/ข้อแลกเปลี่ยน/ความเสี่ยง/สิ่งที่ต้องตัดสินใจ ฉบับเต็ม</li>
+          <li>รายละเอียดเชิงเทคนิค: <code>docs/03_Impact_Analysis.md</code> · <code>docs/04_Technical_Assessment.md</code> · <code>docs/05_Implementation_Plan.md</code></li>
+          <li><b>คำถามที่ต้องตอบก่อนเริ่ม:</b> มัดจำคิดจากค่าห้องอย่างเดียวหรือรวมค่าธรรมเนียม · ภาษีคิดจากยอดเต็มหรือมัดจำ · ใครกดบันทึก "เก็บเงินหน้างานแล้ว" · การจองที่จองไปแล้วจัดการยังไง</li>
         </ul>
       </div>
     </section>
@@ -433,7 +485,7 @@
 </div>
 
 <footer class="wrap">
-  ตัวอย่างหน้าจอ &amp; โครงสร้างข้อมูล · ตัวเลขเป็นตัวอย่างอธิบาย (illustrative) · แหล่งข้อมูลจริง = ../../docs/*.md · อัปเดตเอกสารแล้วค่อยทำใหม่
+  As-Is vs A vs B · ตัวเลขเป็นตัวอย่างอธิบาย (illustrative) · แหล่งข้อมูลจริง = ../../docs/*.md · อัปเดตเอกสารแล้วค่อยทำใหม่
 </footer>
 
 <script>
