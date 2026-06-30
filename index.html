@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Briefs — 2026-06-30</title>
+<style>
+  :root{
+    --bg:#F4F6FA; --ground:#F4F6FA; --surface:#FFFFFF; --surface-2:#EDF1F7;
+    --border:#E2E8F0; --border-2:#CBD5E1;
+    --text:#1A2A3A; --text-dim:#5B7186; --muted:#5B7186; --dim:#94A3B5;
+    --accent:#C2710A; --accent-dim:#E6B884; --accent-soft:#F6E8D5;
+    --blue:#1F6FA8; --blue-soft:#E4EEF6;
+    --ok:#1B8A57; --green:#1B8A57; --ok-soft:#E1F0E8;
+    --warn:#A67C12; --warn-soft:#F5ECD3;
+    --risk:#C5453F; --red:#C5453F; --risk-soft:#F8E3E2;
+    --radius:8px; --radius-lg:14px;
+    --shadow:0 1px 2px rgba(20,30,45,.05),0 4px 14px rgba(20,30,45,.045);
+    --shadow-hover:0 2px 4px rgba(20,30,45,.08),0 8px 24px rgba(20,30,45,.09);
+    --mono:'SF Mono','Cascadia Code','Fira Code',ui-monospace,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,"Noto Sans Thai",sans-serif;
+  }
+  [data-theme="dark"]{
+    --bg:#0F141A; --ground:#0F141A; --surface:#171D26; --surface-2:#1F2832;
+    --border:#2A333F; --border-2:#3A4553;
+    --text:#E6EBF1; --text-dim:#9DAAB8; --muted:#9DAAB8; --dim:#6B7888;
+    --accent:#E0922E; --accent-dim:#7A5C2E; --accent-soft:#332515;
+    --blue:#5AA6D8; --blue-soft:#152836;
+    --ok:#4FC08A; --green:#4FC08A; --ok-soft:#13291F;
+    --warn:#D4B14A; --warn-soft:#2C2614;
+    --risk:#E8736C; --red:#E8736C; --risk-soft:#321A18;
+    --shadow:0 1px 2px rgba(0,0,0,.45),0 4px 16px rgba(0,0,0,.4);
+    --shadow-hover:0 2px 8px rgba(0,0,0,.55),0 8px 28px rgba(0,0,0,.5);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ground);color:var(--text);font-family:var(--sans);
+    font-size:14px;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}
+
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);
+    padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+    gap:1rem;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+  .topbar-id{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+    color:var(--accent);text-transform:uppercase;font-weight:600}
+  .topbar-title{font-size:.8rem;color:var(--muted);letter-spacing:.05em}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 2rem}
+
+  .page-header{margin:3rem 0 2.5rem}
+  .page-header .eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;
+    display:flex;align-items:center;gap:.5rem}
+  .page-header .eyebrow::after{content:'';flex:1;height:1px;
+    background:linear-gradient(to right,var(--accent-dim),transparent)}
+  .page-header h1{font-size:2rem;font-weight:800;letter-spacing:-.01em;line-height:1.25;color:var(--text)}
+  .page-header .sub{font-size:.9rem;color:var(--muted);margin-top:.5rem;max-width:58ch}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;margin-bottom:3rem}
+
+  .doc-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);
+    padding:1.5rem;box-shadow:var(--shadow);
+    transition:box-shadow .15s,border-color .15s,transform .1s;
+    display:flex;flex-direction:column;gap:.9rem}
+  .doc-card:hover{box-shadow:var(--shadow-hover);border-color:var(--border-2);transform:translateY(-1px)}
+  .doc-card a.card-link{position:absolute;inset:0;border-radius:var(--radius-lg)}
+  .card-wrap{position:relative}
+
+  .card-eyebrow{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--accent);font-weight:700}
+  .card-title{font-size:1.05rem;font-weight:800;color:var(--text);line-height:1.3}
+  .card-desc{font-size:.82rem;color:var(--muted);line-height:1.55}
+  .card-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.1rem}
+  .chip{background:var(--surface-2);border:1px solid var(--border);border-radius:4px;
+    padding:.18rem .5rem;font-size:.68rem;color:var(--muted)}
+  .chip b{color:var(--text);font-weight:700}
+  .card-arrow{display:flex;align-items:center;gap:.4rem;font-size:.78rem;
+    font-weight:700;color:var(--accent);margin-top:auto;padding-top:.5rem;
+    border-top:1px solid var(--border)}
+  .card-arrow::after{content:'→';transition:transform .15s}
+  .doc-card:hover .card-arrow::after{transform:translateX(3px)}
+
+  .card-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;
+    justify-content:center;font-size:1.1rem;flex-shrink:0;
+    background:var(--accent-soft);border:1px solid var(--accent-dim)}
+  .card-icon.blue{background:var(--blue-soft);border-color:var(--blue)}
+  .card-icon.green{background:var(--ok-soft);border-color:var(--ok)}
+  .card-top{display:flex;align-items:flex-start;gap:.85rem}
+  .card-top-text{flex:1}
+
+  .badge{display:inline-flex;align-items:center;font-size:.65rem;font-weight:700;
+    padding:.1rem .45rem;border-radius:999px;border:1px solid transparent}
+  .badge.discovery{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
+  .badge.in-progress{background:var(--warn-soft);color:var(--warn);border-color:var(--warn)}
+  .badge.companion{background:var(--surface-2);color:var(--muted);border-color:var(--border-2)}
+
+  .toggle{position:fixed;top:.85rem;right:1rem;z-index:200;background:var(--surface);
+    border:1px solid var(--border-2);color:var(--text);border-radius:999px;
+    padding:.35rem .8rem;font:inherit;font-size:.75rem;cursor:pointer;box-shadow:var(--shadow)}
+  footer{padding:1.5rem 0 2.5rem;border-top:1px solid var(--border);
+    color:var(--dim);font-size:.7rem;font-family:var(--mono);text-align:center}
+
+  @media(max-width:640px){
+    .wrap{padding:0 1rem}
+    .topbar{padding:.65rem 1rem}
+    .page-header{margin:2rem 0 1.75rem}
+    .page-header h1{font-size:1.6rem}
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<button class="toggle" id="themeToggle" aria-label="Toggle theme">🌙 Dark</button>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <span class="topbar-id">Decision Briefs</span>
+    <span class="topbar-title">สรุปเอกสาร Discovery · 2026-06-30</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="page-header">
+    <div class="eyebrow">สรุปเอกสาร Discovery</div>
+    <h1>เอกสารตัดสินใจ</h1>
+    <p class="sub">3 เอกสารจาก Discovery ของ 3 EPIC — สรุปสำหรับ PO / Exec อ่านได้โดยไม่ต้องมีพื้นหลังเทคนิค</p>
+  </header>
+
+  <div class="grid">
+
+    <div class="card-wrap">
+      <div class="doc-card">
+        <div class="card-top">
+          <div class="card-icon">🔔</div>
+          <div class="card-top-text">
+            <div class="card-eyebrow">Notification System &nbsp;<span class="badge discovery">Discovery</span></div>
+            <div class="card-title">ระบบแจ้งเตือน (System-wide)</div>
+          </div>
+        </div>
+        <p class="card-desc">Decision brief — เปรียบเทียบ 3 ทางเลือก, โครงสร้างข้อมูล, ความเสี่ยง, และสิ่งที่ต้องตัดสินใจก่อนเข้าเฟสออกแบบ</p>
+        <div class="card-chips">
+          <span class="chip">ทีม: <b>Backend / Platform</b></span>
+          <span class="chip">ความเสี่ยง: <b>สูง</b></span>
+          <span class="chip">ทางเลือกที่แนะนำ: <b>B</b></span>
+        </div>
+        <div class="card-arrow">อ่านเอกสาร</div>
+        <a class="card-link" href="20260630_brief.html" aria-label="อ่านเอกสาร Notification System"></a>
+      </div>
+    </div>
+
+    <div class="card-wrap">
+      <div class="doc-card">
+        <div class="card-top">
+          <div class="card-icon blue">🎟️</div>
+          <div class="card-top-text">
+            <div class="card-eyebrow">Coupon &amp; Promotion &nbsp;<span class="badge discovery">Discovery</span></div>
+            <div class="card-title">คูปอง &amp; โปรโมชัน</div>
+          </div>
+        </div>
+        <p class="card-desc">Decision brief — ทำอะไรได้แล้ว ยังขาดอะไร เปรียบเทียบ 3 ทางเลือก (ต่อยอด / เพิ่มชั้น / รื้อใหม่) และแผนทำเป็นก้อน</p>
+        <div class="card-chips">
+          <span class="chip">ทีม: <b>Backend / Product</b></span>
+          <span class="chip">ความเสี่ยง: <b>ปานกลาง</b></span>
+          <span class="chip">ทางเลือกที่แนะนำ: <b>A</b></span>
+        </div>
+        <div class="card-arrow">อ่านเอกสาร</div>
+        <a class="card-link" href="20260630_coupon_brief.html" aria-label="อ่านเอกสาร Coupon &amp; Promotion"></a>
+      </div>
+    </div>
+
+    <div class="card-wrap">
+      <div class="doc-card">
+        <div class="card-top">
+          <div class="card-icon green">🏠</div>
+          <div class="card-top-text">
+            <div class="card-eyebrow">Deposit 60% &nbsp;<span class="badge companion">Companion</span></div>
+            <div class="card-title">มัดจำ 60% — ตัวอย่างหน้าจอ &amp; ข้อมูล</div>
+          </div>
+        </div>
+        <p class="card-desc">เอกสารพี่น้องของ Coupon brief — โชว์หน้าจอจำลองที่ลูกค้า/พนักงานเห็น + โครงสร้างข้อมูลของแต่ละทางเลือก เน้นทางเลือก A</p>
+        <div class="card-chips">
+          <span class="chip">ตัวอย่าง: <b>฿17,000 + สัตว์/แขก</b></span>
+          <span class="chip">มัดจำ: <b>60% ของค่าห้อง</b></span>
+        </div>
+        <div class="card-arrow">อ่านเอกสาร</div>
+        <a class="card-link" href="20260630_options_ui_and_data_model.html" aria-label="อ่านเอกสาร Deposit UI"></a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Decision Briefs · Discovery Phase · 2026-06-30
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeToggle');
+    var saved=localStorage.getItem('index-theme'); if(saved) root.dataset.theme=saved;
+    function sync(){var d=root.dataset.theme==='dark';btn.textContent=d?'☀️ Light':'🌙 Dark';}
+    sync();
+    btn.addEventListener('click',function(){
+      root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';
+      localStorage.setItem('index-theme',root.dataset.theme);sync();
+    });
+  })();
+</script>
+</body>
+</html>

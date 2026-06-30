@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--
+  GENERATED ARTIFACT — DO NOT EDIT BY HAND.
+  Source of truth: ../../01_Project_Overview.md + ../../docs/*.md
+  Self-contained: inline CSS + JS only, no external refs. Opens offline.
+-->
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>คูปอง & โปรโมชัน — สรุปเพื่อการตัดสินใจ</title>
+<style>
+  :root{
+    --bg:#F4F6FA; --ground:#F4F6FA; --surface:#FFFFFF; --surface-2:#EDF1F7;
+    --border:#E2E8F0; --border-2:#CBD5E1;
+    --text:#1A2A3A; --text-dim:#5B7186; --muted:#5B7186; --dim:#94A3B5;
+    --accent:#C2710A; --accent-dim:#E6B884; --accent-soft:#F6E8D5;
+    --blue:#1F6FA8; --blue-soft:#E4EEF6;
+    --ok:#1B8A57; --green:#1B8A57; --ok-soft:#E1F0E8;
+    --warn:#A67C12; --yellow:#A67C12; --warn-soft:#F5ECD3;
+    --risk:#C5453F; --red:#C5453F; --risk-soft:#F8E3E2;
+    --code-bg:#1E242C; --code-text:#E6EDF3; --term-bg:#F8FAFC;
+    --radius:8px; --radius-lg:14px;
+    --shadow:0 1px 2px rgba(20,30,45,.05),0 4px 14px rgba(20,30,45,.045);
+    --mono:'SF Mono','Cascadia Code','Fira Code',ui-monospace,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,"Noto Sans Thai",sans-serif;
+  }
+  [data-theme="dark"]{
+    --bg:#0F141A; --ground:#0F141A; --surface:#171D26; --surface-2:#1F2832;
+    --border:#2A333F; --border-2:#3A4553;
+    --text:#E6EBF1; --text-dim:#9DAAB8; --muted:#9DAAB8; --dim:#6B7888;
+    --accent:#E0922E; --accent-dim:#7A5C2E; --accent-soft:#332515;
+    --blue:#5AA6D8; --blue-soft:#152836;
+    --ok:#4FC08A; --green:#4FC08A; --ok-soft:#13291F;
+    --warn:#D4B14A; --yellow:#D4B14A; --warn-soft:#2C2614;
+    --risk:#E8736C; --red:#E8736C; --risk-soft:#321A18;
+    --code-bg:#0C1015; --code-text:#E6EDF3; --term-bg:#10151C;
+    --shadow:0 1px 2px rgba(0,0,0,.45),0 4px 16px rgba(0,0,0,.4);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ground);color:var(--text);font-family:var(--sans);
+    font-size:14px;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+  a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+  h1,h2,h3,h4{line-height:1.3;margin:0}
+  code{font-family:var(--mono);font-size:.86em;background:var(--surface-2);
+    color:var(--text);padding:.1em .35em;border-radius:4px}
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);
+    padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;
+    gap:1rem;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+  .topbar-id{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+    color:var(--accent);text-transform:uppercase;font-weight:600}
+  .topbar-title{font-size:.8rem;color:var(--muted);letter-spacing:.05em}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 2rem}
+  .grid{display:grid;grid-template-columns:230px 1fr;gap:2rem;
+    max-width:1280px;margin:0 auto;padding:0 2rem}
+  @media(max-width:880px){.grid{grid-template-columns:1fr;padding:0 1rem}
+    .toc{position:static!important;max-height:none!important;padding-top:0!important}}
+  .page-header{margin:2.5rem 0}
+  .page-header .eyebrow{font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;
+    display:flex;align-items:center;gap:.5rem}
+  .page-header .eyebrow::after{content:'';flex:1;height:1px;
+    background:linear-gradient(to right,var(--accent-dim),transparent)}
+  .page-header h1{font-size:2rem;font-weight:800;letter-spacing:-.01em;
+    line-height:1.25;color:var(--text)}
+  .page-header .sub{font-size:.92rem;color:var(--muted);margin-top:.5rem;max-width:64ch}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+  .chip{background:var(--surface-2);border:1px solid var(--border);border-radius:5px;
+    padding:.25rem .6rem;font-size:.72rem;color:var(--muted)}
+  .chip b{color:var(--text);font-weight:700}
+  .stats-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--border);border:1px solid var(--border);border-radius:var(--radius);
+    overflow:hidden;margin-bottom:2.5rem}
+  .stat{background:var(--surface);padding:1.25rem 1.5rem;display:flex;
+    flex-direction:column;gap:.25rem}
+  .stat-value{font-size:1.9rem;font-weight:800;line-height:1.1;color:var(--accent);font-family:var(--mono)}
+  .stat-value.blue{color:var(--blue)}.stat-value.green{color:var(--green)}
+  .stat-label{font-size:.72rem;letter-spacing:.04em;color:var(--muted);font-weight:600}
+  .stat-detail{font-size:.74rem;color:var(--dim)}
+  .toc{position:sticky;top:4rem;align-self:start;max-height:calc(100vh - 5rem);
+    overflow:auto;font-size:.82rem;padding-top:2.5rem}
+  .toc a{display:block;color:var(--muted);padding:.3rem .6rem;border-radius:5px;border-left:2px solid transparent}
+  .toc a:hover{background:var(--surface-2);text-decoration:none}
+  .toc a.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-soft);font-weight:600}
+  main{padding-bottom:3rem}
+  section{margin-bottom:2.5rem;scroll-margin-top:4rem}
+  .section-head{font-size:.95rem;font-weight:800;letter-spacing:.01em;color:var(--text);display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+  .section-head::before{content:'';width:4px;height:1.1em;background:var(--accent);border-radius:2px;flex-shrink:0}
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);
+    border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  @media(max-width:620px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--surface);padding:1.1rem 1.25rem}
+  .card h3{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:.6rem}
+  .card.span-2{grid-column:1/-1}
+  .card p{font-size:.86rem}.card ul{margin:0;padding-left:1.1rem;font-size:.86rem}.card li{margin-bottom:.25rem}
+  .callout{background:var(--accent-soft);border:1px solid var(--accent-dim);
+    border-left:3px solid var(--accent);border-radius:var(--radius);padding:1.1rem 1.4rem;margin-bottom:2rem}
+  .callout h2{font-size:.95rem;margin-bottom:.5rem;border:0;padding:0;color:var(--text)}
+  .callout ul{margin:0;padding-left:1.2rem}.callout li{margin-bottom:.4rem;font-size:.88rem}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;background:var(--surface);
+    border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  th{background:var(--surface-2);text-align:left;padding:.65rem 1rem;font-size:.7rem;
+    font-weight:700;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border)}
+  td{padding:.7rem 1rem;border-top:1px solid var(--border);vertical-align:top;line-height:1.5}
+  tbody tr:hover td{background:var(--surface-2)}
+  td.yes{color:var(--ok);font-weight:600}td.no{color:var(--red);font-weight:600}td.warn{color:var(--yellow);font-weight:600}
+  tr.rec td{background:var(--ok-soft)}tr.rec:hover td{background:var(--ok-soft)}
+  .table-scroll{overflow-x:auto;border-radius:var(--radius)}
+  .gloss{width:100%;border-collapse:collapse;font-size:.82rem}
+  .gloss td{padding:.55rem .9rem;border-top:1px solid var(--border);vertical-align:top}
+  .gloss td:first-child{font-weight:700;color:var(--text);white-space:nowrap;width:30%}
+  .opt{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem 1.4rem;margin-bottom:1rem}
+  .opt.win{border-color:var(--ok);border-left:3px solid var(--ok)}
+  .opt h3{font-size:1rem;font-weight:800;color:var(--text);display:flex;align-items:center;gap:.6rem;margin-bottom:.3rem;flex-wrap:wrap}
+  .opt .lead{font-size:.88rem;color:var(--text);margin:.4rem 0 .6rem}
+  .opt .gives{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.5rem 0 .7rem}
+  @media(max-width:560px){.opt .gives{grid-template-columns:1fr}}
+  .opt .gives div{font-size:.82rem;padding:.5rem .7rem;border-radius:6px}
+  .opt .gives .get{background:var(--ok-soft);border:1px solid var(--ok)}
+  .opt .gives .give{background:var(--risk-soft);border:1px solid var(--risk)}
+  .opt .gives b{display:block;margin-bottom:.2rem;font-size:.72rem;letter-spacing:.04em}
+  .opt .gives .get b{color:var(--ok)}.opt .gives .give b{color:var(--red)}
+  .effort{font-family:var(--mono);font-size:.74rem;color:var(--muted);margin-top:.3rem}
+  .badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.7rem;font-weight:700;
+    padding:.1rem .55rem;border-radius:999px;line-height:1.7;border:1px solid transparent}
+  .badge.pick{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+  .badge.lite{background:var(--blue-soft);color:var(--blue);border-color:var(--blue)}
+  .badge.heavy{background:var(--risk-soft);color:var(--risk);border-color:var(--risk)}
+  .risk-level{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;letter-spacing:.02em;white-space:nowrap}
+  .risk-level.high{color:var(--red)}.risk-level.medium{color:var(--yellow)}.risk-level.low{color:var(--green)}
+  .risk-dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0}
+  .risk-dot.low{background:var(--ok)}.risk-dot.medium{background:var(--warn)}.risk-dot.high{background:var(--risk)}
+  .mitigation{font-size:.8rem;color:var(--text);line-height:1.5}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;counter-reset:step;list-style:none;margin:0;padding:0}
+  @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .steps li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1rem}
+  .steps li::before{counter-increment:step;content:"ก้อน " counter(step);display:inline-flex;align-items:center;justify-content:center;
+    padding:.15rem .5rem;border-radius:999px;background:var(--accent);color:#fff;font-weight:800;font-size:.68rem;margin-bottom:.5rem}
+  .steps li h4{font-size:.84rem;margin-bottom:.3rem}.steps li p{margin:0;color:var(--muted);font-size:.76rem}
+  .steps li .ef{display:block;margin-top:.4rem;font-family:var(--mono);font-size:.68rem;color:var(--dim)}
+  .note{border-radius:var(--radius);padding:.85rem 1.05rem;margin-top:.9rem;font-size:.84rem;border:1px solid var(--border);border-left-width:3px}
+  .note.info{background:var(--blue-soft);border-left-color:var(--blue);color:var(--text)}
+  .note.ok{background:var(--ok-soft);border-left-color:var(--ok);color:var(--text)}
+  .note.warn{background:var(--warn-soft);border-left-color:var(--warn);color:var(--text)}
+  .decide{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem}
+  .decide li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start}
+  .decide li.done{opacity:.7}
+  .decide .pr{flex:0 0 auto;font-size:.62rem;font-weight:800;letter-spacing:.05em;padding:.2rem .5rem;border-radius:999px;margin-top:1px}
+  .decide .pr.high{background:var(--risk-soft);color:var(--red);border:1px solid var(--red)}
+  .decide .pr.med{background:var(--warn-soft);color:var(--warn);border:1px solid var(--warn)}
+  .decide .pr.low{background:var(--ok-soft);color:var(--ok);border:1px solid var(--ok)}
+  .decide .pr.dn{background:var(--surface-2);color:var(--muted);border:1px solid var(--border-2)}
+  .decide .q{font-size:.86rem}.decide .q b{color:var(--text)}.decide .q em{color:var(--muted);font-style:normal;font-size:.76rem}
+  .toggle{position:fixed;top:.85rem;right:1rem;z-index:200;background:var(--surface);
+    border:1px solid var(--border-2);color:var(--text);border-radius:999px;padding:.35rem .8rem;font:inherit;font-size:.75rem;cursor:pointer;box-shadow:var(--shadow)}
+  footer{margin-top:3rem;padding:1.5rem 0;border-top:1px solid var(--border);color:var(--dim);font-size:.7rem;font-family:var(--mono);text-align:center}
+  @media(max-width:700px){.wrap{padding:0 1rem}.topbar{padding:.65rem 1rem}
+    .stats-bar{grid-template-columns:1fr}.cards{grid-template-columns:1fr}}
+  @media print{:root{--shadow:none}body{background:#fff;font-size:11pt}
+    .toggle,.toc,.topbar{display:none!important}.grid{display:block;max-width:none;padding:0}
+    section,.card,.opt,.steps li,.decide li{break-inside:avoid;box-shadow:none}a{color:#000}}
+</style>
+</head>
+<body>
+<button class="toggle" id="themeToggle" aria-label="สลับธีม">🌙 Dark</button>
+
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <span class="topbar-id">คูปอง & โปรโมชัน · ขั้น Discovery</span>
+    <span class="topbar-title">สรุปเพื่อการตัดสินใจ · 2026-06-30</span>
+  </div>
+</div>
+
+<header class="page-header wrap">
+  <div class="eyebrow">สรุปเพื่อการตัดสินใจ · สำหรับ PO / ผู้บริหาร</div>
+  <h1>ทำคูปอง &amp; โปรโมชันให้ดีขึ้น</h1>
+  <p class="sub">เราจะทำให้ระบบส่วนลดดีขึ้นยังไง โดยปรับให้เข้ากับของที่เรามีจริง — เอกสารนี้สรุปทางเลือก, ข้อแลกเปลี่ยน, ข้อเสนอแนะ และเรื่องที่ต้องตัดสินใจ. <b>อ่านได้โดยไม่ต้องเป็นสายเทคนิค</b> — ศัพท์ยาก ๆ มีอธิบายในหัวข้อ "ศัพท์เทคนิค".</p>
+  <div class="chips">
+    <span class="chip">สถานะ: <b>กำลังดำเนินการ</b></span>
+    <span class="chip">ขั้น: <b>Discovery (ศึกษา/ตัดสินใจ)</b></span>
+    <span class="chip">เจ้าภาพ: <b>Backend / Product</b></span>
+    <span class="chip">ความเสี่ยง: <b>ปานกลาง</b></span>
+    <span class="chip">อัปเดต: <b>2026-06-30</b></span>
+  </div>
+</header>
+
+<div class="grid">
+  <nav class="toc" id="toc">
+    <a href="#summary">สรุป (อ่านก่อน)</a>
+    <a href="#glossary">ศัพท์เทคนิค</a>
+    <a href="#today">วันนี้เรามีอะไร</a>
+    <a href="#options">3 ทางเลือก</a>
+    <a href="#tradeoffs">ตารางเทียบทางเลือก</a>
+    <a href="#recommend">ข้อเสนอแนะ + เหตุผล</a>
+    <a href="#roadmap">แผนทำเป็นก้อน</a>
+    <a href="#risks">ความเสี่ยง + วิธีคุม</a>
+    <a href="#decisions">สิ่งที่ต้องตัดสินใจ</a>
+  </nav>
+
+  <main>
+    <section id="summary">
+      <div class="stats-bar">
+        <div class="stat"><span class="stat-value">1</span><span class="stat-label">ประเภทส่วนลดวันนี้</span><span class="stat-detail">ลดเป็นบาทคงที่อย่างเดียว</span></div>
+        <div class="stat"><span class="stat-value blue">3</span><span class="stat-label">ทางเลือกที่ประเมิน</span><span class="stat-detail">ต่อยอด / เพิ่มชั้น / รื้อใหม่</span></div>
+        <div class="stat"><span class="stat-value green">A</span><span class="stat-label">ทางเลือกที่แนะนำ</span><span class="stat-detail">ต่อยอดของเดิมทีละนิด</span></div>
+      </div>
+      <div class="callout">
+        <h2>สรุปสั้น ๆ</h2>
+        <ul>
+          <li><b>ของเดิมใช้งานได้จริงแล้ว:</b> admin สร้าง/ลบคูปอง, เจ้าหน้าที่กรอกโค้ดตอนสร้าง booking แล้วระบบลดราคา-บันทึกบัญชีถูกต้อง. แต่ตั้งใจทำ <b>ฟีเจอร์น้อย</b>: ลดได้แค่เป็นบาทคงที่, เราออกเงินส่วนลดเสมอ, แก้คูปองไม่ได้, ไม่มีคูปองผูกลูกค้าเฉพาะคน.</li>
+          <li><b>ดีไซน์อ้างอิง (doc.md) เสนอระบบใหญ่เต็มรูป</b> — แต่หลายส่วน <b>ยังไม่มีที่ใช้</b> เพราะเราไม่มีแอป/หน้าจ่ายเงินฝั่งลูกค้า (เช่น กระเป๋าคูปอง, เลือกคูปองอัตโนมัติ, จับโกง).</li>
+          <li><b>แนะนำทางเลือก A — ต่อยอดของเดิมทีละนิด</b> (ทำน้อย-เสี่ยงน้อย-ได้เร็ว). ปัญหาทุกข้อเป็นแค่ "เติมฟีเจอร์" ไม่ใช่ "ออกแบบผิด".</li>
+          <li><b>ทำเป็นก้อน ๆ:</b> ก้อน 1 ลด % → ก้อน 2 แก้/พักคูปอง + เก็บประวัติ → ก้อน 3 voucher ชดเชยลูกค้า → ก้อน 4 ให้เจ้าของที่พักออกส่วนลด (รอการเงิน) → ก้อน 5 เพดานงบ (ทำหรือไม่ก็ได้).</li>
+          <li><b>เรื่องที่ต้องตัดสินก่อน:</b> มีแผนทำแอปฝั่งลูกค้าไหม (กำหนดว่าหลายฟีเจอร์มีที่ใช้หรือไม่) + เจ้าของที่พักออกส่วนลดแล้วหักเงินจากใคร.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="glossary">
+      <div class="section-head">ศัพท์เทคนิค — อธิบายแบบเข้าใจง่าย</div>
+      <div class="table-scroll"><table class="gloss"><tbody>
+        <tr><td>คูปอง (coupon/promotion)</td><td>โค้ดส่วนลดที่ admin สร้างให้ใช้ตอนจอง เช่น SUMMER1000 ลด 1,000 บาท</td></tr>
+        <tr><td>voucher</td><td>คูปองที่ผูกกับลูกค้าเฉพาะคน ไม่ใช่โค้ดสาธารณะ — เช่นคูปองชดเชยที่ support ออกให้ลูกค้ารายนั้นโดยเฉพาะ</td></tr>
+        <tr><td>ลดเป็นบาทคงที่ (flat)</td><td>ลดเป็นจำนวนเงินตายตัว เช่น "ลด 500 บาท"</td></tr>
+        <tr><td>ลดเป็น % + เพดานลด</td><td>ลดเป็นเปอร์เซ็นต์แต่ไม่เกินเพดาน เช่น "ลด 10% สูงสุด 500 บาท"</td></tr>
+        <tr><td>ยอดขั้นต่ำ (min spend)</td><td>ต้องจองถึงยอดนี้คูปองถึงใช้ได้ เช่น "จองครบ 3,000"</td></tr>
+        <tr><td>ใครออกเงินส่วนลด (funded by)</td><td>ส่วนลดนี้ใครเสียเงิน — แพลตฟอร์ม (เรา) หรือเจ้าของที่พัก</td></tr>
+        <tr><td>เงินที่ต้องจ่ายเจ้าของที่พัก</td><td>ยอดที่บริษัทต้องโอนคืนเจ้าของที่พักหลังหักค่าธรรมเนียม. ถ้าเจ้าของออกส่วนลดเอง ส่วนลดจะไปหักตรงนี้</td></tr>
+        <tr><td>การใช้คูปอง (redemption)</td><td>บันทึก 1 รายการว่า "คูปองนี้ถูกใช้กับ booking ไหน ลดเท่าไหร่" — ตรวจย้อนหลังได้</td></tr>
+        <tr><td>บัญชีเงิน — เขียนเพิ่มอย่างเดียว (ledger)</td><td>สมุดบันทึกการเคลื่อนไหวเงินของ booking — เขียนเพิ่มได้อย่างเดียว ห้ามลบ/แก้ย้อนหลัง เหมือนสมุดบัญชีจริงที่ขีดฆ่าไม่ได้</td></tr>
+        <tr><td>ทำเป็นชุดเดียว (transaction)</td><td>งานหลายขั้น (สร้าง booking + ลดราคา + บันทึกการใช้คูปอง) สำเร็จพร้อมกันหรือยกเลิกทั้งหมด — ไม่มีค้างครึ่งทางที่เงินเพี้ยน</td></tr>
+        <tr><td>ตัวกันคนกดชนกัน (lock)</td><td>กันสองคนกดใช้คูปองเดียวกันพร้อมกันแล้วเกินโควต้า — ระบบล็อกให้ทำทีละคน</td></tr>
+        <tr><td>การปรับฐานข้อมูล (migration)</td><td>การเพิ่ม/แก้ช่องเก็บข้อมูล. แบบ "เพิ่มช่องใหม่เฉย ๆ ไม่แตะของเดิม" = เสี่ยงต่ำ</td></tr>
+        <tr><td>จุดเชื่อมระบบ (port/contract)</td><td>จุดต่อระหว่างระบบจองกับระบบคูปอง — ถ้าไม่แตะจุดนี้ ฝั่งจองไม่ต้องแก้ตาม</td></tr>
+        <tr><td>ตรวจก่อนแล้วค่อยใช้</td><td>เจ้าหน้าที่พิมพ์โค้ด → กดตรวจ → ระบบบอกว่าใช้ได้/ไม่ได้และลดเท่าไหร่ → ค่อยกดใช้จริง</td></tr>
+        <tr><td>กระทบยอด (reconcile)</td><td>ฝ่ายการเงินตรวจว่าตัวเลขเงินทุกฝั่งตรงกัน — ส่วนลดต้องบันทึกถูกไม่งั้นกระทบยอดไม่ลง</td></tr>
+        <tr><td>ระบบก้อนเดียวแบ่งโมดูล + ADR-001</td><td>สถาปัตยกรรมปัจจุบัน: ระบบเดียว ฐานข้อมูลเดียว แบ่งโมดูลในตัว — เลือกไว้โดยตั้งใจ. ADR-001 = กติกาบริษัทว่า "ห้ามสร้างใหญ่เกินก่อนมีความต้องการจริง"</td></tr>
+      </tbody></table></div>
+    </section>
+
+    <section id="today">
+      <div class="section-head">วันนี้เรามีอะไร (และยังขาดอะไร)</div>
+      <div class="cards">
+        <div class="card">
+          <h3>✅ ทำได้แล้ว</h3>
+          <ul>
+            <li>admin สร้าง + ลบคูปองได้</li>
+            <li>เจ้าหน้าที่กรอกโค้ดตอนสร้าง booking → ตรวจ → ลดราคา</li>
+            <li>ส่วนลดบันทึกลงบัญชีเงินถูกต้อง (เป็นชุดเดียว, มีตัวกันคนกดชนกัน, กันคูปองซ้ำต่อ booking)</li>
+            <li>เวลาคูปองใช้ไม่ได้ ระบบบอกเหตุผลชัด (หมดอายุ/ยอดไม่ถึง/ฯลฯ)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>❌ ยังขาด</h3>
+          <ul>
+            <li>ลดเป็น % (ทำได้แค่เป็นบาทคงที่)</li>
+            <li>แก้คูปองหลังสร้าง (มีแค่สร้าง + ลบ)</li>
+            <li>ให้เจ้าของที่พักออกส่วนลดเอง (เราออกเงินเสมอ)</li>
+            <li>voucher ผูกลูกค้าเฉพาะคน (สำหรับ support ชดเชย)</li>
+            <li>เพดานงบเป็นบาทต่อแคมเปญ</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note ok"><b>ข้อสรุปสำคัญ:</b> ระบบเดิม "ทำงานถูกต้อง" — ที่ขาดคือ "จำนวนฟีเจอร์" ไม่ใช่ "ออกแบบผิด". จึงต่อยอดได้ ไม่ต้องรื้อ.</div>
+    </section>
+
+    <section id="options">
+      <div class="section-head">3 ทางเลือก</div>
+
+      <div class="opt win">
+        <h3>ทางเลือก A — ต่อยอดของเดิมทีละนิด <span class="badge pick">แนะนำ</span></h3>
+        <p class="lead">เก็บระบบเดิมไว้ แล้วเติมฟีเจอร์ที่ขาดทีละอย่าง โดยไม่รื้ออะไร — "ทำน้อย เสี่ยงน้อย ได้เร็ว".</p>
+        <div class="gives">
+          <div class="get"><b>PO ได้</b>ฟีเจอร์ที่อยากได้เร็ว ทีละก้อน ปล่อยใช้ได้เรื่อย ๆ; ความเสี่ยงเงินเพี้ยนต่ำสุด; ตรงกติกาบริษัท</div>
+          <div class="give"><b>PO เสีย</b>ยังทำ "1 แคมเปญหลายโค้ด" ไม่ได้ — ถ้าวันหน้าจำเป็น ต้องกลับมาปรับโครงอีกรอบ</div>
+        </div>
+        <div class="effort">เวลา: ~1 สัปดาห์/ก้อน · ความเสี่ยง: ปานกลาง (คุมได้ด้วยการทดสอบ)</div>
+      </div>
+
+      <div class="opt">
+        <h3>ทางเลือก B — เพิ่มชั้นใหม่ครึ่งทาง <span class="badge lite">ทำกลาง</span></h3>
+        <p class="lead">เก็บคูปองเดิมเป็นแม่แบบกฎ แล้วเพิ่มชั้นใหม่เพื่อรองรับ "1 แคมเปญ → หลายโค้ด" และ voucher ผูกลูกค้าเต็มตัว.</p>
+        <div class="gives">
+          <div class="get"><b>PO ได้</b>ความยืดหยุ่นแบบที่ทางเลือก A ทำไม่ได้ (หลายโค้ดต่อแคมเปญ + voucher ลูกค้าแบบเต็มตัว)</div>
+          <div class="give"><b>PO เสีย</b>ต้องไปแก้จุดที่ต่อกับระบบเงินที่ทำงานถูกอยู่ = เสี่ยงพังของเดิม; ช้ากว่า; กระเป๋าคูปองลูกค้ายังใช้ไม่เต็ม (ไม่มีแอป)</div>
+        </div>
+        <div class="effort">เวลา: สูง (1–2 sprint) · ความเสี่ยง: สูง (แตะเส้นทางเงิน)</div>
+      </div>
+
+      <div class="opt">
+        <h3>ทางเลือก C — รื้อสร้างใหม่ทั้งหมดตาม doc.md <span class="badge heavy">ทำเยอะ</span></h3>
+        <p class="lead">สร้างระบบใหม่ทั้งก้อน (แคมเปญ + คูปอง + voucher + งบ + ขออนุมัติ + จับโกง) ตามดีไซน์อ้างอิงเต็มรูป.</p>
+        <div class="gives">
+          <div class="get"><b>PO ได้</b>ครบทุกอย่างใน doc.md</div>
+          <div class="give"><b>PO เสีย</b>เกือบทั้งหมดยังไม่มีคนใช้ (ไม่มีแอปลูกค้า); ช้าหลายเดือนกว่าจะได้ของ; ต้องรื้อระบบเงินที่ทำงานถูก = เสี่ยงสุด; ขัดกติกาบริษัท</div>
+        </div>
+        <div class="effort">เวลา: สูงมาก (หลาย sprint หลายทีม) · ความเสี่ยง: สูงมาก</div>
+      </div>
+    </section>
+
+    <section id="tradeoffs">
+      <div class="section-head">ตารางเทียบทางเลือก (ภาษาคน)</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>เกณฑ์</th><th>A — ต่อยอด</th><th>B — เพิ่มชั้น</th><th>C — รื้อใหม่</th></tr></thead>
+        <tbody>
+          <tr><td>ได้ของชิ้นแรกเร็วแค่ไหน</td><td class="yes">เร็ว (~1 สัปดาห์/ก้อน)</td><td class="warn">ช้า</td><td class="no">ช้ามาก</td></tr>
+          <tr><td>ตรงกติกาบริษัท (ไม่สร้างใหญ่เกิน)</td><td class="yes">ตรง</td><td class="warn">ก้ำกึ่ง</td><td class="no">ขัด</td></tr>
+          <tr><td>โอกาสทำของเดิมพัง</td><td class="yes">ต่ำ</td><td class="no">สูง</td><td class="no">สูงมาก</td></tr>
+          <tr><td>ต้องแก้ฝั่งระบบจองไหม</td><td class="yes">ไม่ต้อง</td><td class="warn">ต้องแก้</td><td class="no">รื้อใหม่</td></tr>
+          <tr><td>รองรับ "1 แคมเปญหลายโค้ด"</td><td class="no">ไม่ได้</td><td class="yes">ได้</td><td class="yes">ได้</td></tr>
+          <tr><td>กระเป๋าคูปองลูกค้า (เมื่อมีแอป)</td><td class="warn">ต้องเพิ่มหน้าจอ</td><td class="yes">มีพร้อม</td><td class="yes">มีครบ</td></tr>
+          <tr><td>ถ้าแอปลูกค้าไม่มา จะเหลือภาระแค่ไหน</td><td class="yes">ต่ำ</td><td class="warn">กลาง</td><td class="no">สูง (ครึ่งระบบไม่ถูกใช้)</td></tr>
+          <tr><td>ปรับทิศทางทีหลังง่ายแค่ไหน</td><td class="yes">ง่าย</td><td class="warn">กลาง</td><td class="no">ยาก</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="recommend">
+      <div class="section-head">ข้อเสนอแนะ + เหตุผล</div>
+      <div class="callout">
+        <h2>เลือกทางเลือก A — ต่อยอดของเดิมทีละนิด</h2>
+        <ul>
+          <li><b>ของเดิมออกแบบมาดีแล้ว ที่ขาดคือจำนวนฟีเจอร์</b> — ลดราคา + ลงบัญชีเงิน + กันข้อมูลปน + กันคนกดชนกัน ทำถูกอยู่แล้ว.</li>
+          <li><b>ช่อง "ประเภทส่วนลด" และ "ใครออกเงิน" เผื่อไว้ในดีไซน์แล้ว</b> → เพิ่มลด % และให้เจ้าของที่พักออกส่วนลด คือการใช้ของที่มี ไม่ใช่สร้างใหม่.</li>
+          <li><b>กติกาบริษัทห้ามสร้างใหญ่เกินก่อนมีความต้องการจริง</b> — ทางเลือก C สร้างระบบเยอะทั้งที่ยังไม่มีสัญญาณ (ไม่มีทีมการตลาดเต็มตัว/ไม่มีแอปลูกค้า/ยอดยังไม่เยอะ).</li>
+          <li><b>เรายังไม่มีแอปฝั่งลูกค้า</b> → ครึ่งหนึ่งของ doc.md ยังไม่มีที่ใช้ สร้างตอนนี้ = ของที่ไม่มีใครใช้.</li>
+          <li><b>ปรับทิศทีหลังได้ถูก</b> — ออกแบบเผื่อไว้ ถ้าวันหน้าต้องการมากขึ้น ค่อยขยับไปทางเลือก B บนความต้องการจริง.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="section-head">แผนทำเป็นก้อน (ของทางเลือก A)</div>
+      <ol class="steps">
+        <li><h4>ลดเป็น % + เพดานลด</h4><p>เช่น "ลด 10% สูงสุด 500" — ผลกระทบสูงสุด ทำง่ายสุด</p><span class="ef">1–3 วัน</span></li>
+        <li><h4>แก้/พักคูปอง + เก็บประวัติ</h4><p>ปิดปัญหา "แก้คูปองไม่ได้"; รู้ว่าใครแก้ตอนไหน</p><span class="ef">2–4 วัน</span></li>
+        <li><h4>voucher ชดเชยลูกค้า</h4><p>support ออก voucher ผูกลูกค้า + เหตุผล + มีประวัติ</p><span class="ef">3–5 วัน</span></li>
+        <li><h4>เจ้าของที่พักออกส่วนลด</h4><p>ต้องให้การเงินยืนยันวิธีหักเงินก่อน (CL-04)</p><span class="ef">2–4 วัน · รอการเงิน</span></li>
+        <li><h4>เพดานงบต่อแคมเปญ</h4><p>หยุดใช้เมื่อยอดส่วนลดรวมถึงเพดาน</p><span class="ef">1–2 วัน · ทำหรือไม่ก็ได้</span></li>
+      </ol>
+      <div class="note info"><b>หมายเหตุ:</b> ลำดับนี้เป็นข้อเสนอ — ลำดับจริงขึ้นกับว่า PO อยากแก้ปัญหาไหนก่อน (ดู "สิ่งที่ต้องตัดสินใจ").</div>
+    </section>
+
+    <section id="risks">
+      <div class="section-head">ความเสี่ยง + วิธีคุม</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>ความเสี่ยง</th><th>ระดับ</th><th>วิธีคุม</th></tr></thead>
+        <tbody>
+          <tr><td>ลด % แล้วการปัดเศษสตางค์ไม่ตรงบัญชี</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td><td class="mitigation">ปัดเศษให้เรียบร้อยก่อนบันทึก + ทดสอบว่าตัวเลขเงินทุกฝั่งตรงกันเป๊ะ</td></tr>
+          <tr><td>เจ้าของที่พักออกส่วนลดแล้วลงบัญชีผิด</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td><td class="mitigation">หยุดก้อนนี้ไว้จนกว่าฝ่ายการเงินยืนยันว่าหักเงินจากใคร (CL-04) + ทดสอบกระทบยอด</td></tr>
+          <tr><td>เพิ่มช่องข้อมูลไปกระทบตัวกันคูปองซ้ำ/ตัวกันคนกดชนกันเดิม</td><td><span class="risk-level medium"><span class="risk-dot medium"></span>กลาง</span></td><td class="mitigation">เพิ่มช่องใหม่แบบไม่บังคับ ไม่แตะของเดิม + ทดสอบว่าคูปองเดิมยังใช้ได้</td></tr>
+          <tr><td>ขอบเขตงานบานไปทางเลือก C</td><td><span class="risk-level medium"><span class="risk-dot medium"></span>กลาง</span></td><td class="mitigation">คุมด้วยคำถาม "มีแอปลูกค้าไหม" + กติกาบริษัท; ฟีเจอร์ที่ต้องมีแอป = ยกออกจนกว่าจะมีจริง</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="decisions">
+      <div class="section-head">สิ่งที่ต้องตัดสินใจ</div>
+      <ul class="decide">
+        <li><span class="pr high">สำคัญ</span><span class="q"><b>CL-01 · มีแผนทำแอป/หน้าจอที่ลูกค้าใช้เองไหม?</b> — กำหนดว่ากระเป๋าคูปอง/เลือกอัตโนมัติ/จับโกง มีที่ใช้หรือยกออกถาวร <em>เจ้าภาพ: Product</em></span></li>
+        <li><span class="pr high">สำคัญ</span><span class="q"><b>CL-02 · เพิ่ม "ลดเป็น % + เพดานลด" เป็นก้อนแรกไหม?</b> — ผลกระทบการตลาดสูงสุด ทำง่ายสุด <em>เจ้าภาพ: Product</em></span></li>
+        <li><span class="pr med">ปานกลาง</span><span class="q"><b>CL-03 · เพิ่ม "แก้/พักคูปอง + เก็บประวัติ" ไหม?</b> — แบบทำน้อย (เปิด/พักพอ) หรือทำเยอะ (สถานะครบ + ขออนุมัติ) <em>เจ้าภาพ: Product</em></span></li>
+        <li><span class="pr high">สำคัญ</span><span class="q"><b>CL-04 · เจ้าของที่พักออกส่วนลด — หักเงินจากใคร?</b> — เจ้าของรับภาระ หรือแบ่งจ่ายร่วม (ต้องให้การเงินยืนยัน) <em>เจ้าภาพ: Finance / Backend</em></span></li>
+        <li><span class="pr med">ปานกลาง</span><span class="q"><b>CL-05 · voucher ชดเชยจาก support — เอาแค่ผูกลูกค้า+เหตุผล หรือเต็มรูป?</b> <em>เจ้าภาพ: Product / Support</em></span></li>
+        <li><span class="pr low">ต่ำ</span><span class="q"><b>CL-06 · ต้องมีเพดานงบเป็นบาทต่อแคมเปญไหม?</b> — หยุดใช้เมื่อถึงเพดาน <em>เจ้าภาพ: Finance</em></span></li>
+        <li class="done"><span class="pr dn">เสร็จ</span><span class="q">ศึกษาระบบคูปองจริง (backend + frontend) เทียบ doc.md <em>เสร็จ 2026-06-30</em></span></li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<footer class="wrap">
+  สรุปเพื่อการตัดสินใจ · แหล่งข้อมูลจริง = 01_Project_Overview.md + docs/*.md · อัปเดตเอกสารแล้วค่อยทำใหม่
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('themeToggle');
+    var saved=localStorage.getItem('coupon-brief-theme'); if(saved) root.dataset.theme=saved;
+    function sync(){var d=root.dataset.theme==='dark';btn.textContent=d?'☀️ Light':'🌙 Dark';}
+    sync();
+    btn.addEventListener('click',function(){
+      root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';
+      localStorage.setItem('coupon-brief-theme',root.dataset.theme);sync();
+    });
+  })();
+  (function(){
+    var links=[].slice.call(document.querySelectorAll('#toc a'));
+    var map={}; links.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));if(s)map[s.id]=a;});
+    var obs=new IntersectionObserver(function(es){
+      es.forEach(function(en){ if(en.isIntersecting){
+        links.forEach(function(a){a.classList.remove('active');});
+        if(map[en.target.id])map[en.target.id].classList.add('active');
+      }});
+    },{rootMargin:'-20% 0px -70% 0px'});
+    Object.keys(map).forEach(function(id){obs.observe(document.getElementById(id));});
+  })();
+</script>
+</body>
+</html>
