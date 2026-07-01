@@ -221,21 +221,21 @@
 
 <div class="topbar">
   <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-    <span class="topbar-id">Deposit Split · Option B · Discovery</span>
-    <span class="topbar-title">สรุป + หน้าจอ + ข้อมูล + schema (ฉบับเดียวจบ) · 2026-06-30</span>
+    <span class="topbar-id">Property Fees & Conditions · Discovery</span>
+    <span class="topbar-title">ระบบค่าธรรมเนียมตามเงื่อนไข + แยกมัดจำ · 2026-07-01</span>
   </div>
 </div>
 
 <header class="page-header wrap">
-  <div class="eyebrow">Deposit Split (Option B) · สรุป + หน้าจอ + ข้อมูล + schema</div>
-  <h1>มัดจำ 60% + ค่าสัตว์/แขกเสริมเป็น Fee — สรุปครบในที่เดียว</h1>
-  <p class="sub">เอกสารฉบับเดียวจบ — <b>ตัดสินใจแล้วว่าทำทางเลือก B</b> (จัดการ "ยอดเรียกเก็บคงเหลือ" เต็มรูป) พร้อม <b>ยก Extra Guest / Pet ออกมาเป็น "Fee" แยกจาก package</b>. รวมทั้ง <b>สรุปผู้บริหาร</b>, <b>หน้าจอ (As-Is เทียบ B)</b>, <b>โครงสร้างข้อมูล + database schema (ตาราง+ตัวอย่าง)</b>, <b>ประเมินว่าต้องแก้เยอะแค่ไหน (Code Assessment)</b>, แผนทำเป็นเฟส, ความเสี่ยง และสิ่งที่ต้องตัดสินใจ. <i>(ทางเลือก A/C ตัดทิ้งแล้ว · ยอดคงเหลือ = บิลที่ยังไม่จ่าย แบบเดิม · ไม่มีระบบแจ้งเตือนลูกค้า)</i></p>
+  <div class="eyebrow">Property Fees & Conditions · สรุป + หน้าจอ + ข้อมูล + schema</div>
+  <h1>ระบบค่าธรรมเนียมตามเงื่อนไขของบ้าน + แยกมัดจำเป็นค่าห้อง</h1>
+  <p class="sub"><b>หนึ่งระบบ extensible สำหรับ "เงื่อนไขที่มีค่าธรรมเนียม" ต่อบ้าน</b> — สัตว์เลี้ยง, ผู้เข้าพักเสริม, เด็ก, ผู้มาเยือน, ค่าทำความสะอาด, ค่าล้างจาน ฯลฯ — เก็บราคารายบ้าน, ตอนจองกลายเป็นบิลย่อยอัตโนมัติ, แก้หลังจองได้. คู่กับ <b>แยกมัดจำ</b> ให้คิด 60% จาก<b>ค่าห้องอย่างเดียว</b> ส่วน fee ทั้งหมดไปอยู่ในยอดเรียกเก็บคงเหลือ จ่ายทีเดียวจบ. <b>หลักการ:</b> reuse billing engine ของ value-added service เดิม (ไม่สร้าง engine ที่สอง) + จัดการในหน้า "กฎ/เงื่อนไข". <i>(ยอดคงเหลือ = บิลที่ยังไม่จ่าย · ไม่มีระบบแจ้งเตือนลูกค้า)</i></p>
   <div class="chips">
     <span class="chip">ค่าห้อง <b>฿17,000</b></span>
     <span class="chip">+ แขกเสริม <b>฿1,500</b> (2×750)</span>
-    <span class="chip">+ สัตว์เลี้ยง <b>฿800</b> (1 ตัวใหญ่)</span>
+    <span class="chip">+ สัตว์ <b>฿800</b> + ทำความสะอาด <b>฿500</b></span>
     <span class="chip">มัดจำ 60% × ค่าห้อง = <b>฿10,200</b></span>
-    <span class="chip">งานโดยรวม: <b>ใหญ่ (L)</b></span>
+    <span class="chip">งานโดยรวม: <b>L</b> (กว้าง/retest เยอะ)</span>
   </div>
 </header>
 
@@ -243,7 +243,7 @@
   <nav class="toc" id="toc">
     <a href="#summary">สรุป (อ่านก่อน)</a>
     <a href="#glossary">ศัพท์ (ฉบับย่อ)</a>
-    <a href="#feemove">Fee แยกออกจาก package</a>
+    <a href="#feemove">ค่าสัตว์/แขกเสริม → บริการเสริม</a>
     <a href="#asis">วันนี้ (As-Is)</a>
     <a href="#optionB">แบบใหม่ (Option B)</a>
     <a href="#schema">Database schema</a>
@@ -257,20 +257,31 @@
   <main>
     <section id="summary">
       <div class="stats-bar">
-        <div class="stat"><span class="stat-value">฿11,580</span><span class="stat-label">วันนี้: มัดจำตอนจอง</span><span class="stat-detail">60% ของ "ทุกอย่าง" (รวมสัตว์/แขก)</span></div>
-        <div class="stat"><span class="stat-value blue">฿10,200</span><span class="stat-label">แบบใหม่: มัดจำตอนจอง</span><span class="stat-detail">60% ของ "ค่าห้อง" เท่านั้น (−1,380)</span></div>
-        <div class="stat"><span class="stat-value warn">฿9,100</span><span class="stat-label">ยอดเรียกเก็บคงเหลือ (จ่ายทีเดียว)</span><span class="stat-detail">ค่าห้องคงเหลือ + แขกเสริม + สัตว์</span></div>
+        <div class="stat"><span class="stat-value blue">฿10,200</span><span class="stat-label">มัดจำตอนจอง</span><span class="stat-detail">60% ของ "ค่าห้อง" เท่านั้น (ไม่รวม fee)</span></div>
+        <div class="stat"><span class="stat-value warn">฿9,600</span><span class="stat-label">ยอดเรียกเก็บคงเหลือ (จ่ายทีเดียว)</span><span class="stat-detail">ค่าห้องคงเหลือ + แขกเสริม + สัตว์ + ทำความสะอาด</span></div>
+        <div class="stat"><span class="stat-value">∞</span><span class="stat-label">ชนิด fee เพิ่มได้ไม่จำกัด</span><span class="stat-detail">เพิ่ม code ใหม่ใน catalog · ไม่ต้องแก้โค้ด</span></div>
       </div>
       <div class="callout">
         <h2>อ่านสั้น ๆ ก่อน</h2>
         <ul>
-          <li><b>ตัดสินใจแล้ว: ทำทางเลือก B</b> (จัดการ "ยอดเรียกเก็บคงเหลือ" เต็มรูป — มีสถานะ, ตั้งวันครบกำหนด, ให้ลูกค้าจ่ายล่วงหน้าผ่านลิงก์ได้) — ตัด A/C ทิ้ง.</li>
-          <li><b>การเปลี่ยนโครงสร้างใหญ่ขึ้น:</b> ยก <b>ค่าแขกเสริม + ค่าสัตว์เลี้ยง ออกมาเป็น "Fee" แยก</b> — เดิมราคาพวกนี้<b>ฝังอยู่ใน package</b> (เป็นช่องในตาราง package) จะย้ายไปอยู่ตารางใหม่ <code>property_fees</code>.</li>
-          <li><b>package ยังเก็บปุ่มเปิด/ปิด "รับสัตว์เลี้ยง" ไว้เหมือนเดิม</b> — ช่องนี้ (<code>pets_allowed</code>) <b>มีอยู่แล้ว</b> ไม่ต้องทำใหม่; ที่ย้ายออกคือ "ราคา" เท่านั้น.</li>
-          <li><b>มัดจำยังคิดจาก package (ค่าห้อง) เหมือนเดิม</b> · ค่าแขกเสริม/สัตว์คิดจาก Fee (ตามจำนวนจริง) · admin แก้จำนวน/ค่า fee ได้แม้จองแล้ว.</li>
-          <li><b>ยอดเรียกเก็บคงเหลือ = ค่าห้องคงเหลือ + แขกเสริม + สัตว์ รวมกัน มีปุ่ม "ชำระพร้อมกันทั้งหมด" ทีเดียว.</b></li>
-          <li><b>ต้องแก้เยอะไหม → ใหญ่ (L):</b> ไม่ใช่แค่แก้สูตรมัดจำจุดเดียวแล้ว — เพราะการย้าย fee ออกจาก package = ตารางใหม่ + ย้ายข้อมูล + แก้เครื่องคิดราคา + แก้ 2 หน้าจอ admin; บวกของใหม่ของ B (สถานะ/ลิงก์/ปุ่มจ่ายรวม). ดูหัวข้อ "ต้องแก้เยอะไหม".</li>
+          <li><b>concept กลาง = "รายการค่าธรรมเนียมของบ้าน" (Property Charge Item)</b> — ไม่ใช่ "service": สัตว์เลี้ยง, ผู้เข้าพักเสริม, เด็ก, ผู้มาเยือน, ค่าทำความสะอาด, ค่าล้างจาน ฯลฯ = charge item ที่ตั้งราคารายบ้าน + มี <code>category</code> ที่กำหนด behavior ชัด. "บริการเสริมสมัครใจ" (อาหารเช้า/รถรับส่ง) เป็นแค่ <b>หนึ่ง category</b> ไม่ใช่ถังรวมทุกอย่าง.</li>
+          <li><b>หลักการ #1 — มี billing engine เดียว:</b> ทุกอย่างที่แตะเงินไหลผ่าน flow เดียว (snapshot ราคา → charge → recompute) ที่ <b>reuse จาก value-added engine</b>. terms ห้ามมี logic คิดเงินของตัวเอง.</li>
+          <li><b>terms = ชั้น policy/อธิบาย ไม่ใช่ที่เก็บเงิน:</b> "อนุญาตสัตว์/เด็ก/ผู้มาเยือนไหม, ห้ามสูบบุหรี่, quiet hours" อยู่ที่ <code>property_terms</code>. ถ้ากฎมีค่าใช้จ่าย → terms <b>อ้างอิงไปยัง charge item</b> (ไม่เก็บ <code>fee_amount</code> เดี่ยว ๆ) → เงินมีแหล่งเดียว.</li>
+          <li><b>แยก 2 หน้าที่ของ extra-guest/เด็ก:</b> <b>capacity gate</b> (จองได้ไหม — base/max guest, เด็กนับ capacity ไหม) อยู่ที่ <b>package</b>; <b>fee calc</b> (ถ้าจองได้คิดเท่าไหร่) อยู่ที่ <b>charge item</b>. ไม่ยัดรวมที่เดียว.</li>
+          <li><b>แยกมัดจำ:</b> มัดจำ = 60% ของ<b>ค่าห้องอย่างเดียว</b> · fee ทุกตัวเป็นบิลแยก (type <code>fee</code>) ไปอยู่ในยอดคงเหลือ จ่ายปุ่มเดียวทีเดียว · แก้จำนวน/ราคาได้แม้จองแล้ว (reuse add/cancel charge item).</li>
+          <li><b>ต้องแก้เยอะไหม → L:</b> ไม่ใช่เพราะซับซ้อน แต่เพราะ <b>Path B (rename ตาราง physical จริง)</b> กระทบกว้าง (~32 ไฟล์ + feature value-added/catalog ที่ ship แล้ว) → retest กว้าง. billing engine ยัง reuse หมด. ดู "Rename Impact & Retest Scope".</li>
         </ul>
+      </div>
+      <div class="callout" style="border-left-color:var(--accent)">
+        <h2>สถาปัตยกรรม (architecture)</h2>
+        <p style="margin:.2rem 0 .9rem;font-weight:700">Terms = อธิบายเงื่อนไข · Property Charge Items = นิยามเงิน · Billing Engine = คิดเงินจริง</p>
+        <div class="flow">
+          <span class="node">Terms / Policy UI</span><span class="arr">→</span>
+          <span class="node pay">Property Charge Items<small>นิยามเงิน</small></span><span class="arr">→</span>
+          <span class="node site">Booking Line Items</span><span class="arr">→</span>
+          <span class="node site">Charge / Snapshot / Recompute</span><span class="arr">→</span>
+          <span class="node end">Payment / Invoice / Summary</span>
+        </div>
       </div>
     </section>
 
@@ -278,18 +289,21 @@
       <div class="section-head">ศัพท์ที่ใช้ในเล่มนี้ (ฉบับย่อ)</div>
       <div class="table-scroll"><table class="gloss"><tbody>
         <tr><td>Package (แพ็กเกจ)</td><td>"สินค้าห้องพัก" ที่ตั้งราคาค่าห้อง + กติกา (จำนวนคนสูงสุด, รับสัตว์ไหม) — ตาราง <code>property_packages</code></td></tr>
-        <tr><td>Fee (ค่าธรรมเนียมแยก)</td><td>ค่าบริการที่คิดเพิ่มตามจำนวนจริง เช่น ค่าแขกเสริม/หัว, ค่าสัตว์/ตัว — <b>ของใหม่:</b> ย้ายออกจาก package มาเก็บในตาราง <code>property_fees</code></td></tr>
-        <tr><td>pets_allowed (รับสัตว์เลี้ยง)</td><td>สวิตช์เปิด/ปิดว่าแพ็กเกจนี้รับสัตว์ไหม — <span class="reuse">มีอยู่แล้วบน package</span> เก็บไว้ที่เดิม (ย้ายออกแค่ "ราคา")</td></tr>
-        <tr><td>Charge (บิลย่อย)</td><td>1 รายการเงินที่ต้องเก็บ เก็บในตาราง <code>booking_charges</code> เช่น deposit, room_balance, extra_guest, pet</td></tr>
-        <tr><td>ยอดเรียกเก็บคงเหลือ (balance due)</td><td>เงินส่วนที่เหลือหลังหักมัดจำ = ค่าห้องคงเหลือ + แขกเสริม + สัตว์ · ในระบบ = <code>booking_financial_summary.outstanding_amount</code> (<span class="reuse">มีอยู่แล้ว</span>)</td></tr>
+        <tr><td>Property charge item (รายการค่าธรรมเนียมของบ้าน)</td><td>คอนเซ็ปต์กลางของ EPIC นี้ — "เงื่อนไขที่มีค่าธรรมเนียม" 1 อย่าง (สัตว์/แขกเสริม/เด็ก/ผู้มาเยือน/ทำความสะอาด/ล้างจาน). เก็บบน 3 ตาราง (rename จากระบบ value-added): catalog <code class="tcell-new">charge_item_master</code> + ราคารายบ้าน <code class="tcell-new">property_charge_items</code> + snapshot การจอง <code class="tcell-new">booking_charge_items</code></td></tr>
+        <tr><td><code class="tcell-new">category</code> (behavior contract)</td><td><b>ของใหม่:</b> ชนิดของ charge item ที่กำหนด behavior ชัด — <code>optional_service</code> (สมัครใจ), <code>condition_fee</code> (จากเงื่อนไข เช่น สัตว์), <code>occupancy_fee</code> (จากจำนวนคน เช่น แขกเสริม/เด็ก), <code>mandatory_fee</code> (บังคับ เช่น ทำความสะอาด), <code>rule</code> (ไม่มีเงิน → อยู่ terms). ดูตาราง behavior ในหัวข้อถัดไป</td></tr>
+        <tr><td><code class="tcell-new">is_system</code> (code ของระบบ)</td><td><b>ของใหม่:</b> flag บน catalog บอกว่า code นี้ "ระบบเป็นเจ้าของ" — ลบ/เปลี่ยน code ไม่ได้. seed พื้นฐาน: <code>EXTRA_GUEST</code>, <code>CHILD</code>, <code>VISITOR</code>, <code>PET_SMALL</code>, <code>PET_LARGE</code>, <code>CLEANING</code>, <code>DISHWASHING</code> — เพิ่มได้ไม่จำกัด (เพิ่ม code = เพิ่มชนิด fee)</td></tr>
+        <tr><td>property_terms (policy layer)</td><td>ชั้น "อธิบาย/นโยบาย/กฎ" (อนุญาตสัตว์/เด็ก/ผู้มาเยือนไหม, ห้ามสูบบุหรี่, quiet hours). <b>ไม่เก็บเงิน</b> — ถ้ากฎมีค่าใช้จ่าย terms <b>อ้างอิงไปยัง charge item</b> (<code>related_charge_item_id</code>); <code>fee_amount</code> เดิมไม่ใช้เป็นค่าคิดเงิน. เงินมีแหล่งเดียว = charge item</td></tr>
+        <tr><td>pets_allowed / capacity</td><td>สวิตช์ "รับสัตว์" + ความจุ (<code>max_extra_guests</code>) — <span class="reuse">มีอยู่แล้วบน package</span> เป็น gate; ย้ายออกแค่ "ราคา"</td></tr>
+        <tr><td>Charge (บิลย่อย)</td><td>1 รายการเงินที่ต้องเก็บ ตาราง <code>booking_charges</code> เช่น deposit, room_balance, <code class="tcell-new">fee</code> (ค่าธรรมเนียมเงื่อนไข), service</td></tr>
+        <tr><td>charge type <code class="tcell-new">fee</code></td><td><b>ของใหม่:</b> ประเภทบิลของค่าธรรมเนียมเงื่อนไข (occupancy/condition_fee) — แยกจาก <code>service</code> (สมัครใจ) เพื่อให้การเงินแยกรายได้ fee ได้; ชนิดจริงดูจาก <code>charge_item_code</code> บน <code>booking_charge_items</code></td></tr>
+        <tr><td>ยอดเรียกเก็บคงเหลือ (balance due)</td><td>เงินหลังหักมัดจำ = ค่าห้องคงเหลือ + fee เงื่อนไขทั้งหมด · ในระบบ = <code>booking_financial_summary.outstanding_amount</code> (<span class="reuse">มีอยู่แล้ว</span>)</td></tr>
         <tr><td>payment_status</td><td>สถานะการจ่ายระดับการจอง เช่น <code>balance_due</code> (ยังมียอดค้าง) — <b>ช่องใหม่บน bookings</b></td></tr>
-        <tr><td>payment_links</td><td>ลิงก์ให้ลูกค้าจ่ายยอดคงเหลือเองล่วงหน้า — <b>ตารางใหม่</b></td></tr>
         <tr><td>pay-all (ชำระพร้อมกันทั้งหมด)</td><td>จ่าย 1 ครั้งตัดหลายบิลพร้อมกัน — ใช้ <code>payment_allocations</code> (1 payment → หลาย charges, <span class="reuse">มีอยู่แล้ว</span>)</td></tr>
       </tbody></table></div>
     </section>
 
     <section id="feemove">
-      <div class="section-head">การเปลี่ยนหลัก — ยก "ค่าแขกเสริม / ค่าสัตว์" ออกจาก package เป็น Fee</div>
+      <div class="section-head">การเปลี่ยนหลัก — ราคา fee ออกจาก package → catalog "รายการค่าธรรมเนียมของบ้าน" (reuse value-added + เพิ่ม category/is_system)</div>
       <div class="two-col">
         <div>
           <div class="col-label">วันนี้: ราคาฝังใน package</div>
@@ -307,25 +321,40 @@
           </div>
         </div>
         <div>
-          <div class="col-label">แบบใหม่: package เก็บกติกา, Fee เก็บราคา</div>
+          <div class="col-label">แบบใหม่: package เก็บกติกา, ราคา fee = Property Charge Item</div>
           <div class="mock">
-            <div class="mock-bar"><span>property_packages + property_fees</span><span class="tag">ใหม่</span></div>
+            <div class="mock-bar"><span>package + charge_item_master + property_charge_items</span><span class="tag">reuse</span></div>
             <div class="mock-body" style="font-family:var(--mono);font-size:.74rem;line-height:1.7">
               <b>property_packages</b><br>
               base_rate (ค่าห้อง)<br>
               max_guests / max_extra_guests<br>
               <span class="reuse">pets_allowed = true</span> (อยู่ที่เดิม)<br>
               <span style="color:var(--dim)">— ไม่มีช่องราคา fee แล้ว —</span><br><br>
-              <b class="tcell-new">property_fees (ตารางใหม่)</b><br>
-              <span class="cn" style="text-decoration:none">extra_guest = 750 /หัว/คืน</span><br>
-              <span class="cn" style="text-decoration:none">pet_small = 400 /ตัว/เข้าพัก</span><br>
-              <span class="cn" style="text-decoration:none">pet_large = 800 /ตัว/เข้าพัก</span>
+              <b class="reuse">charge_item_master</b> <span class="tcell-new">+ category + is_system</span><br>
+              <span class="cn" style="text-decoration:none">EXTRA_GUEST/CHILD/VISITOR (occupancy)</span><br>
+              <span class="cn" style="text-decoration:none">PET_*/CLEANING/DISHWASHING (condition_fee)</span><br><br>
+              <b class="reuse">property_charge_items</b> (ราคา/บ้าน — มีอยู่แล้ว)<br>
+              <span class="cn" style="text-decoration:none">EXTRA_GUEST 750/หัว/คืน · PET_LARGE 800/ตัว</span><br>
+              <span class="cn" style="text-decoration:none">CLEANING 500/เข้าพัก · CHILD … · VISITOR …</span>
             </div>
-            <div class="mock-note">ราคา fee อยู่แยก → admin แก้ค่า/จำนวนได้อิสระ, คิดเงินตามจำนวนจริง, ไม่กระทบราคาห้อง</div>
+            <div class="mock-note">reuse value-added engine → ตอนจองกลายเป็นบิล (type=<code>fee</code>) อัตโนมัติตามจำนวนจริง · เพิ่มชนิด fee ใหม่ = เพิ่ม code ใน catalog ไม่ต้องแก้โค้ด · admin แก้ผ่านหน้า conditions tab</div>
           </div>
         </div>
       </div>
-      <div class="note warn"><b>นี่คือสาเหตุที่งานใหญ่ขึ้น:</b> การย้ายช่องราคาออกจาก package = ต้องมี <b>ตารางใหม่ + ย้ายข้อมูลเดิม + แก้เครื่องคิดราคา (pricing) ให้ไปอ่านจาก Fee + แก้หน้าจอจัดการแพ็กเกจ (เอาช่อง fee ออก) + ทำหน้าจอจัดการ Fee ใหม่</b>. (สวิตช์ "รับสัตว์" ไม่ต้องแตะ — มีอยู่แล้ว)</div>
+      <div class="note ok"><b>หลักการที่ทำให้ scalable + maintainable:</b> แยก 2 ชั้น — <b>(1) Definition</b> (catalog + ราคารายบ้าน, จัดการในหน้า conditions tab) กับ <b>(2) Billing engine</b> (snapshot → charge → recompute). <b>ไม่สร้าง billing engine ที่สอง</b> — reuse ของ value-added ทั้งหมด. เพิ่มแค่ <code class="tcell-new">category</code> + <code class="tcell-new">is_system</code>. เพิ่มชนิด fee ใหม่ = เพิ่ม code ใน catalog (ไม่ต้องแก้โค้ด).</div>
+
+      <div class="col-label" style="margin-top:1.4rem">category = behavior contract (ไม่ใช่ string ลอย ๆ — แต่ละ category กำหนดพฤติกรรมตายตัว)</div>
+      <div class="table-scroll"><table>
+        <thead><tr><th>category</th><th>ลูกค้าเลือกเอง</th><th>บังคับ</th><th>auto จากเงื่อนไข</th><th>แสดงที่</th><th>charge type</th></tr></thead>
+        <tbody>
+          <tr><td><code>optional_service</code></td><td class="yes">✅</td><td class="no">✕</td><td class="no">✕</td><td>Add-on (booking)</td><td>service</td></tr>
+          <tr><td><code>condition_fee</code> <span style="color:var(--dim)">(สัตว์)</span></td><td class="warn">อาจ</td><td class="warn">อาจ</td><td class="yes">✅</td><td>Terms / สรุปการจอง</td><td class="tcell-new">fee</td></tr>
+          <tr><td><code>occupancy_fee</code> <span style="color:var(--dim)">(แขกเสริม/เด็ก)</span></td><td class="no">auto</td><td class="yes">✅ เมื่อเข้าเงื่อนไข</td><td class="yes">✅</td><td>Guest selector / price breakdown</td><td class="tcell-new">fee</td></tr>
+          <tr><td><code>mandatory_fee</code> <span style="color:var(--dim)">(ทำความสะอาด)</span></td><td class="no">✕</td><td class="yes">✅</td><td class="yes">✅</td><td>Price breakdown</td><td class="tcell-new">fee</td></tr>
+          <tr><td><code>rule</code> <span style="color:var(--dim)">(ห้ามสูบบุหรี่)</span></td><td class="no">✕</td><td class="no">✕</td><td class="no">✕</td><td>Terms only (ไม่มีเงิน)</td><td>—</td></tr>
+        </tbody>
+      </table></div>
+      <div class="note info"><b>แยก 2 หน้าที่ของ extra-guest / เด็ก:</b> <b>capacity gate</b> ("จองได้ไหม" — base/max guest, เด็กนับ capacity ไหม, infant) อยู่ที่ <b>package/rate plan</b> · <b>fee calc</b> ("ถ้าจองได้ คิดเท่าไหร่" — เกิน base คิด ฿/หัว/คืน, เด็กตาม age-band, ผู้มาเยือนเกิน N) อยู่ที่ <b>charge item</b> (<code>occupancy_fee</code>). ไม่ยัดรวมที่เดียว.</div>
     </section>
 
     <section id="asis">
@@ -367,7 +396,7 @@
     </section>
 
     <section id="optionB">
-      <div class="section-head">แบบใหม่ (Option B) — มัดจำจากค่าห้อง + Fee แยก + จ่ายยอดคงเหลือทีเดียว <span class="badge pick">เลือกแล้ว</span></div>
+      <div class="section-head">แบบใหม่ (Option B) — มัดจำจากค่าห้อง + ค่าเสริมเป็นบริการของระบบ + จ่ายยอดคงเหลือทีเดียว <span class="badge pick">เลือกแล้ว</span></div>
       <div class="two-col">
         <div>
           <div class="col-label">หน้าจอที่ลูกค้า/พนักงานเห็น</div>
@@ -384,24 +413,23 @@
                 <div class="li tot"><span>จ่ายแล้ว</span><span class="amt st-paid">฿10,200 ✓</span></div>
               </div>
               <div class="pay-group onsite">
-                <div class="gh"><span>② ยอดเรียกเก็บคงเหลือ</span><span class="when">จ่ายล่วงหน้า หรือ check-in</span></div>
+                <div class="gh"><span>② ยอดเรียกเก็บคงเหลือ</span><span class="when">ก่อน/ตอน check-in</span></div>
                 <div class="li"><span>ค่าห้องส่วนที่เหลือ</span><span class="amt">฿6,800</span></div>
-                <div class="li"><span>ค่าแขกเสริม (2 × 750) <span style="color:var(--accent)">[Fee · admin แก้ได้]</span></span><span class="amt">฿1,500</span></div>
-                <div class="li"><span>ค่าสัตว์เลี้ยง (1 ตัวใหญ่) <span style="color:var(--accent)">[Fee · admin แก้ได้]</span></span><span class="amt">฿800</span></div>
-                <div class="li tot"><span>ยอดเรียกเก็บคงเหลือ</span><span class="amt">฿9,100</span></div>
-                <span class="paybtn">ชำระยอดคงเหลือทั้งหมด ฿9,100</span>
+                <div class="li"><span>ค่าแขกเสริม (2 × 750) <span style="color:var(--accent)">[fee · occupancy]</span></span><span class="amt">฿1,500</span></div>
+                <div class="li"><span>ค่าสัตว์เลี้ยง (1 ตัวใหญ่) <span style="color:var(--accent)">[fee · condition]</span></span><span class="amt">฿800</span></div>
+                <div class="li"><span>ค่าทำความสะอาด (1 ครั้ง) <span style="color:var(--accent)">[fee · condition]</span></span><span class="amt">฿500</span></div>
+                <div class="li tot"><span>ยอดเรียกเก็บคงเหลือ</span><span class="amt">฿9,600</span></div>
+                <span class="paybtn">ชำระยอดคงเหลือทั้งหมด ฿9,600</span>
               </div>
-              <div class="li tot"><span>ยอดเต็ม</span><span class="amt">฿19,300</span></div>
+              <div class="li tot"><span>ยอดเต็ม</span><span class="amt">฿19,800</span></div>
             </div>
-            <div class="mock-note">มัดจำต่ำลง ฿1,380 · แขกเสริม/สัตว์เป็น Fee แยก (admin แก้จำนวน/ราคาได้แม้จองแล้ว) · ปุ่มเดียวจ่ายยอดคงเหลือรวดเดียว · ไม่มีแจ้งเตือนลูกค้า</div>
+            <div class="mock-note">มัดจำคิดจากค่าห้องอย่างเดียว · fee ทุกชนิด (แขกเสริม/สัตว์/ทำความสะอาด/…) เป็น line item แก้จำนวน/ราคาได้แม้จองแล้ว ผ่าน flow เดิม · ปุ่มเดียวจ่ายรวดเดียว · ไม่มีแจ้งเตือนลูกค้า</div>
           </div>
           <div class="col-label" style="margin-top:1.1rem">ลำดับการจ่าย</div>
           <div class="flow">
             <span class="node pay">มัดจำ<small>฿10,200</small></span>
             <span class="arr">→</span>
-            <span class="node site">จ่ายยอดคงเหลือล่วงหน้า<small>ลิงก์ (ถ้าเลือก)</small></span>
-            <span class="arr">→</span>
-            <span class="node site">หรือจ่ายทีเดียวตอน check-in<small>฿9,100</small></span>
+            <span class="node site">จ่ายยอดคงเหลือทีเดียว<small>฿9,600 · ก่อน/ตอน check-in</small></span>
             <span class="arr">→</span>
             <span class="node end">check-out</span>
           </div>
@@ -409,23 +437,24 @@
         <div>
           <div class="col-label">ระบบเก็บข้อมูล — <code>booking_charges</code></div>
           <div class="table-scroll"><table>
-            <thead><tr><th>charge</th><th class="num">amount</th><th>due_at</th><th>status</th></tr></thead>
+            <thead><tr><th>charge (type)</th><th class="num">amount</th><th>due_at</th><th>status</th></tr></thead>
             <tbody>
               <tr><td><b>deposit</b></td><td class="num">10,200</td><td>—</td><td><span class="st-paid">paid</span></td></tr>
               <tr><td><b>room_balance</b></td><td class="num">6,800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
-              <tr><td><b>extra_guest</b></td><td class="num">1,500</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
-              <tr><td><b class="tcell-new">pet</b> ◆</td><td class="num">800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+              <tr><td><b class="tcell-new">fee</b> ◆ (แขกเสริม ×2)</td><td class="num">1,500</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+              <tr><td><b class="tcell-new">fee</b> ◆ (สัตว์ใหญ่ ×1)</td><td class="num">800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+              <tr><td><b class="tcell-new">fee</b> ◆ (ทำความสะอาด)</td><td class="num">500</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
             </tbody>
           </table></div>
-          <div class="note ok"><b>ยอดเรียกเก็บคงเหลือ ฿9,100</b> = ผลรวมบิลที่ยังไม่จ่ายทั้งหมด (ที่ไม่ใช่มัดจำ) = <code>outstanding_amount</code> ที่มีอยู่แล้ว — เหมือนโมเดล deposit/balance เดิม. ปุ่ม "ชำระทั้งหมด" = 1 payment ตัด 3 บิลพร้อมกันผ่าน <code>payment_allocations</code> (มีอยู่แล้ว). <code>extra_guest</code>/<code>pet</code> มาจาก Fee → admin แก้จำนวน/ราคาแล้ว recompute บิลได้.</div>
-          <div class="note info"><b>ของใหม่ที่ต้องเพิ่ม:</b> charge type <code>pet</code>, <code>bookings.payment_status='balance_due'</code>, ตาราง <code>payment_links</code> (ลิงก์จ่ายล่วงหน้า), และ path "แก้ fee แล้วคิดบิลใหม่". <code>due_at</code> + <code>outstanding_amount</code> ใช้ของที่มีอยู่แล้ว (ยอดคงเหลือ = unpaid non-deposit).</div>
+          <div class="note ok"><b>ยอดเรียกเก็บคงเหลือ ฿9,600</b> = ผลรวมบิลที่ยังไม่จ่ายทั้งหมด (ที่ไม่ใช่มัดจำ) = <code>outstanding_amount</code> ที่มีอยู่แล้ว. ปุ่ม "ชำระทั้งหมด" = 1 payment ตัด 4 บิลพร้อมกันผ่าน <code>payment_allocations</code> (มีอยู่แล้ว). บิล <code>fee</code> ทุกตัวมาจาก "รายการค่าธรรมเนียมของบ้าน" (<code>booking_charge_items</code>) → admin แก้จำนวน/ราคาแล้ว recompute ผ่าน flow add/cancel service เดิมได้.</div>
+          <div class="note info"><b>ของใหม่ที่ต้องเพิ่ม:</b> <code>category</code> + <code>is_system</code> บน catalog, charge type <code>fee</code>, <code>bookings.payment_status='balance_due'</code>, auto-apply fee service ตามจำนวนแขก/สัตว์/เงื่อนไข. <code>due_at</code> + <code>outstanding_amount</code> + ปุ่มรับเงิน/allocation + recompute (add/cancel service) ใช้ของที่มีอยู่แล้ว (เก็บผ่านหน้า "รับเงิน" เดิม).</div>
         </div>
       </div>
     </section>
 
     <section id="schema">
       <div class="section-head">Database schema — ตาราง + ตัวอย่างข้อมูล</div>
-      <div class="note info" style="margin-top:0;margin-bottom:1rem"><b>อ่านยังไง:</b> ชื่อจริงจากโค้ด (<code>pkg/domain/booking_money.go</code>, <code>property_package.go</code>). <span class="tcell-new">สีส้ม ◆</span> = ตาราง/คอลัมน์ใหม่ · <span class="removed">ขีดฆ่า</span> = ย้ายออก · <span class="reuse">สีเขียว</span> = มีอยู่แล้วใช้ต่อ. แสดงเฉพาะคอลัมน์ที่เกี่ยวข้อง.</div>
+      <div class="note info" style="margin-top:0;margin-bottom:1rem"><b>อ่านยังไง:</b> ชื่อจริงจากโค้ด (<code>booking_money.go</code>, <code>property_package.go</code>, <code>property_service.go</code>). <span class="tcell-new">สีส้ม ◆</span> = ของใหม่ · <span class="removed">ขีดฆ่า</span> = ย้ายออก · <span class="reuse">สีเขียว</span> = มีอยู่แล้วใช้ต่อ. <b>ตัวอย่าง 1 การจอง</b>: ค่าห้อง 17,000 + แขกเสริม 2 หัว + สัตว์ใหญ่ 1 ตัว + ทำความสะอาด 1 ครั้ง — ไล่ดูตั้งแต่ catalog → ราคารายบ้าน → snapshot บนการจอง → บิล (เห็น 3 หน่วยคิดเงินต่างกันบน flow เดียว).</div>
 
       <div class="schema-tables">
         <div class="tbl-cap">As-Is · <code>property_packages</code> <span class="badge base">ของเดิม</span></div>
@@ -448,26 +477,49 @@
           <tbody><tr><td>12</td><td>Riverside Villa 2BR</td><td class="num">17,000</td><td class="num">2</td><td><span class="reuse">true</span> (อยู่ที่เดิม)</td></tr></tbody>
         </table></div>
 
-        <div class="tbl-cap">แบบใหม่ · <code class="tcell-new">property_fees</code> ◆ ตารางใหม่ — ราคาที่ย้ายออกจาก package</div>
+        <div class="note warn" style="margin-top:1.2rem;margin-bottom:.6rem"><b>Path B — rename ตาราง physical จริง</b> (ให้ schema สื่อความหมายสุด): <code class="removed">service_master</code>→<code class="tcell-new">charge_item_master</code> · <code class="removed">property_services</code>→<code class="tcell-new">property_charge_items</code> · <code class="removed">booking_services</code>→<code class="tcell-new">booking_charge_items</code> (+ rename column). <b>กระทบ feature value-added เดิม + catalog subsystem</b> (ใช้ตารางร่วมกัน) → ดู "Rename Impact & Retest Scope" ในหัวข้อถัดไป.</div>
+        <div class="tbl-cap">แบบใหม่ ① · <code class="tcell-new">charge_item_master</code> <span class="badge lite">renamed จาก <code class="removed">service_master</code> + <code class="tcell-new">category</code> ◆ + <code class="tcell-new">is_system</code> ◆</span></div>
         <div class="table-scroll"><table>
-          <thead><tr><th>id</th><th>package_id</th><th>fee_type</th><th class="num">amount</th><th>unit</th></tr></thead>
+          <thead><tr><th>code</th><th>label_th</th><th class="new-col">category</th><th>unit</th><th class="new-col">is_system</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>12</td><td>extra_guest</td><td class="num">750</td><td>per_head_per_night</td></tr>
-            <tr><td>2</td><td>12</td><td>pet_small</td><td class="num">400</td><td>per_pet_per_stay</td></tr>
-            <tr><td>3</td><td>12</td><td>pet_large</td><td class="num">800</td><td>per_pet_per_stay</td></tr>
+            <tr><td>EXTRA_GUEST</td><td>ค่าแขกเสริม</td><td>occupancy_fee ◆</td><td>per_head_per_night</td><td><span class="flag-y">true</span> ◆</td></tr>
+            <tr><td>CHILD</td><td>ค่าเด็ก</td><td>occupancy_fee ◆</td><td>per_head_per_night</td><td><span class="flag-y">true</span> ◆</td></tr>
+            <tr><td>PET_SMALL / PET_LARGE</td><td>ค่าสัตว์ (เล็ก/ใหญ่)</td><td>condition_fee ◆</td><td>per_pet</td><td><span class="flag-y">true</span> ◆</td></tr>
+            <tr><td>CLEANING</td><td>ค่าทำความสะอาด</td><td>mandatory_fee ◆</td><td>per_stay</td><td><span class="flag-y">true</span> ◆</td></tr>
+            <tr><td><span style="color:var(--dim)">… VISITOR, DISHWASHING, + เพิ่มได้</span></td><td colspan="4" style="color:var(--dim)">เพิ่ม code ใหม่ใน catalog = เพิ่มชนิด fee ใหม่ ไม่ต้องแก้โค้ด</td></tr>
           </tbody>
         </table></div>
-
-        <div class="tbl-cap">แบบใหม่ · <code>booking_charges</code> <span class="badge lite">+ charge type "pet" (ไม่เพิ่ม column)</span></div>
+        <div class="tbl-cap">แบบใหม่ ② · <code class="tcell-new">property_charge_items</code> <span class="badge lite">renamed จาก <code class="removed">property_services</code> · ราคารายบ้าน</span></div>
         <div class="table-scroll"><table>
-          <thead><tr><th>charge</th><th class="num">amount</th><th>due_at</th><th>status</th></tr></thead>
+          <thead><tr><th>id</th><th>property_id</th><th class="new-col">charge_item_code</th><th class="num">price</th><th class="num">min_qty</th><th class="num">max_qty</th></tr></thead>
           <tbody>
-            <tr><td>deposit</td><td class="num">10,200</td><td>—</td><td><span class="st-paid">paid</span></td></tr>
-            <tr><td>room_balance</td><td class="num">6,800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
-            <tr><td>extra_guest</td><td class="num">1,500</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
-            <tr><td class="tcell-new">pet ◆</td><td class="num">800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+            <tr><td>31</td><td>7</td><td>EXTRA_GUEST</td><td class="num">750</td><td class="num">0</td><td class="num">2</td></tr>
+            <tr><td>32</td><td>7</td><td>PET_SMALL</td><td class="num">400</td><td class="num">0</td><td class="num">—</td></tr>
+            <tr><td>33</td><td>7</td><td>PET_LARGE</td><td class="num">800</td><td class="num">0</td><td class="num">—</td></tr>
+            <tr><td>34</td><td>7</td><td>CLEANING</td><td class="num">500</td><td class="num">1</td><td class="num">1</td></tr>
           </tbody>
         </table></div>
+        <div class="tbl-cap">แบบใหม่ ③ · <code class="tcell-new">booking_charge_items</code> <span class="badge lite">renamed จาก <code class="removed">booking_services</code> · snapshot บนการจอง #10248</span></div>
+        <div class="table-scroll"><table>
+          <thead><tr><th>id</th><th class="new-col">property_charge_item_id</th><th class="num">qty</th><th class="num">unit_price_snapshot</th><th>charge_id →</th></tr></thead>
+          <tbody>
+            <tr><td>88</td><td>31 (EXTRA_GUEST)</td><td class="num">2</td><td class="num">750</td><td>5002</td></tr>
+            <tr><td>89</td><td>33 (PET_LARGE)</td><td class="num">1</td><td class="num">800</td><td>5003</td></tr>
+            <tr><td>90</td><td>34 (CLEANING)</td><td class="num">1</td><td class="num">500</td><td>5004</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tbl-cap">แบบใหม่ ④ · <code>booking_charges</code> <span class="badge lite">+ charge type <code class="tcell-new">fee</code> ◆ (ไม่เพิ่ม column)</span></div>
+        <div class="table-scroll"><table>
+          <thead><tr><th>id</th><th>type</th><th class="num">amount</th><th>due_at</th><th>status</th></tr></thead>
+          <tbody>
+            <tr><td>5000</td><td>deposit</td><td class="num">10,200</td><td>—</td><td><span class="st-paid">paid</span></td></tr>
+            <tr><td>5001</td><td>room_balance</td><td class="num">6,800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+            <tr><td>5002</td><td class="tcell-new">fee ◆</td><td class="num">1,500</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+            <tr><td>5003</td><td class="tcell-new">fee ◆</td><td class="num">800</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+            <tr><td>5004</td><td class="tcell-new">fee ◆</td><td class="num">500</td><td>2026-07-25</td><td><span class="st-unpaid">unpaid</span></td></tr>
+          </tbody>
+        </table></div>
+        <div class="note ok" style="margin-top:.4rem"><b>ไล่ความเชื่อม:</b> booking #10248 → <code>booking_charge_items</code> (qty × ราคา freeze) → ผูก <code>charge_id</code> → <code>booking_charges</code> type=<code>fee</code>. fee 3 ตัว (แขกเสริม/สัตว์/ทำความสะอาด) คนละ <code>category</code>/หน่วย แต่ใช้ flow เดียวกัน. แก้จำนวนหลังจอง = add/cancel charge item → charge ปรับปรุง (append-only) + recalc — <b>flow value-added เดิม</b>. มัดจำ (5000) คิดจากค่าห้องอย่างเดียว ไม่รวม fee.</div>
 
         <div class="tbl-cap">แบบใหม่ · <code>bookings</code> <span class="badge lite">+ payment_status</span></div>
         <div class="table-scroll"><table>
@@ -475,31 +527,28 @@
           <tbody><tr><td>10248</td><td>confirmed</td><td><span class="flag-y">balance_due</span> ◆</td></tr></tbody>
         </table></div>
 
-        <div class="tbl-cap">แบบใหม่ · <code class="tcell-new">payment_links</code> ◆ ตารางใหม่ — ลิงก์จ่ายล่วงหน้า</div>
-        <div class="table-scroll"><table>
-          <thead><tr><th>id</th><th>booking_id</th><th>token</th><th class="num">amount</th><th>expires_at</th><th>status</th></tr></thead>
-          <tbody><tr><td>1</td><td>10248</td><td>pl_a1b2c3</td><td class="num">9,100</td><td>2026-07-25</td><td>active</td></tr></tbody>
-        </table></div>
-
         <div class="tbl-cap">แบบใหม่ · ปุ่ม "ชำระทั้งหมด" = <code>payments</code> + <code>payment_allocations</code> <span class="reuse">มีอยู่แล้ว</span></div>
         <div class="table-scroll"><table>
-          <thead><tr><th>payment_id</th><th class="num">amount</th><th>method</th><th>→ ตัดบิล (charge)</th><th class="num">alloc amount</th></tr></thead>
+          <thead><tr><th>payment_id</th><th class="num">amount</th><th>method</th><th>→ ตัดบิล (charge_id · type)</th><th class="num">alloc amount</th></tr></thead>
           <tbody>
-            <tr><td>501</td><td class="num">9,100</td><td>card</td><td>room_balance</td><td class="num">6,800</td></tr>
-            <tr><td>501</td><td class="num"></td><td></td><td>extra_guest</td><td class="num">1,500</td></tr>
-            <tr><td>501</td><td class="num"></td><td></td><td>pet</td><td class="num">800</td></tr>
+            <tr><td>501</td><td class="num">9,600</td><td>card</td><td>5001 · room_balance</td><td class="num">6,800</td></tr>
+            <tr><td>501</td><td class="num"></td><td></td><td>5002 · fee (แขกเสริม)</td><td class="num">1,500</td></tr>
+            <tr><td>501</td><td class="num"></td><td></td><td>5003 · fee (สัตว์)</td><td class="num">800</td></tr>
+            <tr><td>501</td><td class="num"></td><td></td><td>5004 · fee (ทำความสะอาด)</td><td class="num">500</td></tr>
           </tbody>
         </table></div>
-        <div class="note ok" style="margin-top:.6rem"><b>1 payment → 3 allocations</b> = "ชำระพร้อมกันทั้งหมดทีเดียว" ทำได้บนโครงสร้างที่มีอยู่แล้ว (<code>payment_allocations</code>) · <code>booking_financial_summary.outstanding_amount</code> ลดจาก 9,100 → 0 อัตโนมัติ.</div>
+        <div class="note ok" style="margin-top:.6rem"><b>1 payment → 4 allocations</b> = "ชำระพร้อมกันทั้งหมดทีเดียว" ทำได้บนโครงสร้างที่มีอยู่แล้ว (<code>payment_allocations</code>) · <code>booking_financial_summary.outstanding_amount</code> ลดจาก 9,600 → 0 อัตโนมัติ. (มัดจำ 5000 จ่ายแล้ว ไม่อยู่ในยอดนี้)</div>
       </div>
     </section>
 
     <section id="impact">
-      <div class="section-head">ต้องแก้เยอะไหม (Code Assessment) <span class="verdict L" style="margin-left:auto">งานโดยรวม: ใหญ่ (L)</span></div>
+      <div class="section-head">ต้องแก้เยอะไหม (Code Assessment) <span class="verdict L" style="margin-left:auto">งานโดยรวม: L</span></div>
       <div class="callout">
-        <h2>คำตอบ: เยอะกว่าตอนแรกพอสมควร — ระดับ "ใหญ่ (L)"</h2>
+        <h2>คำตอบ: L — งานส่วนใหญ่ "กว้าง" (rename + retest) ไม่ใช่ "ซับซ้อน"</h2>
         <ul>
-          <li><b>ทำไมถึงใหญ่:</b> เดิมคิดว่าแก้ "สูตรมัดจำจุดเดียว" — แต่ตอนนี้บวก <b>การยก fee ออกจาก package</b> (ตารางใหม่ + ย้ายข้อมูล + แก้ pricing + 2 หน้าจอ admin) <b>และ</b> ของใหม่ของ Option B (สถานะ balance_due + ลิงก์จ่ายเงิน + ปุ่มจ่ายรวม + แก้ fee หลังจอง) — หลายชิ้นเป็น "ของใหม่ที่ยังไม่มีให้ต่อยอด".</li>
+          <li><b>ทำไม L:</b> เลือก <b>Path B — rename ตาราง physical จริง</b> (<code>service_master</code>→<code>charge_item_master</code>, <code>property_charge_items</code>→<code>property_charge_items</code>, <code>booking_charge_items</code>→<code>booking_charge_items</code> + column + Go types). กระทบ <b>~18 ไฟล์ backend + ~14 ไฟล์ frontend + 2 migration + tests</b> และ<b>โดน feature value-added ที่ ship แล้ว + catalog subsystem</b> (ใช้ตารางร่วมกัน) → retest กว้าง.</li>
+          <li><b>แต่ไม่ซับซ้อนเชิง algorithm:</b> billing engine ยัง reuse ทั้งหมด (charge model, add/cancel = append-only recompute, pay-all, money-extras UI) — ไม่มี engine ที่สอง/ไม่มี recompute path ใหม่. L มาจาก "blast radius กว้าง" ล้วน ๆ.</li>
+          <li><b>งานจริง:</b> (1) rename schema+types+wiring; (2) <code>category</code>+<code>is_system</code>+guard; (3) charge type <code>fee</code>; (4) auto-apply per category; (5) ถอด fee ออกจากฐานมัดจำ (reconcile GATE); (6) <code>balance_due</code>+pay-all; (7) หน้าจัดการเงื่อนไข (domain forms); (8) migration rename+ย้ายข้อมูล.</li>
         </ul>
       </div>
       <div class="two-col" style="grid-template-columns:1fr 1fr">
@@ -512,6 +561,9 @@
               <tr><td><code>payment_allocations</code> (จ่ายตัดหลายบิล = pay-all)</td><td class="yes">มีแล้ว</td></tr>
               <tr><td>ตั้งมัดจำ % แบบ 3 ชั้น (property→partner→platform)</td><td class="yes">มีแล้ว</td></tr>
               <tr><td><code>pets_allowed</code> (สวิตช์รับสัตว์)</td><td class="yes">มีแล้ว</td></tr>
+              <tr><td>billing engine เดิม (ตาราง <code>charge_item_master</code>/<code>property_charge_items</code>/<code>booking_charge_items</code> — rename จากของ value-added)</td><td class="yes">มีแล้ว</td></tr>
+              <tr><td>แตกบิล service + แก้บิลหลังจอง (add/cancel = adjustment)</td><td class="yes">มีแล้ว</td></tr>
+              <tr><td>หน้าจอ money-extras + qty stepper + auto-apply</td><td class="yes">มีแล้ว</td></tr>
             </tbody>
           </table></div>
         </div>
@@ -519,39 +571,45 @@
           <div class="col-label" style="color:var(--risk)">ของใหม่ที่ต้องสร้าง (เพิ่มงาน)</div>
           <div class="table-scroll"><table>
             <tbody>
-              <tr><td>ตาราง <code>property_fees</code> + ย้ายข้อมูลจาก package</td><td class="no">ใหม่</td></tr>
-              <tr><td>charge type <code>pet</code> (ยอดคงเหลือ = unpaid non-deposit)</td><td class="no">ใหม่</td></tr>
-              <tr><td><code>bookings.payment_status</code> + <code>payment_links</code></td><td class="no">ใหม่</td></tr>
-              <tr><td>แก้ fee หลังจอง → คิดบิลใหม่ (void+adjust)</td><td class="no">ใหม่ (ยังไม่มี)</td></tr>
-              <tr><td>pricing อ่าน fee จาก property_fees แทน package</td><td class="warn">แก้</td></tr>
+              <tr><td>rename schema+types+wiring (Path B, ~32 ไฟล์)</td><td class="no">ใหม่ (กว้าง)</td></tr>
+              <tr><td><code class="tcell-new">category</code> + <code class="tcell-new">is_system</code> + seed/guard บน <code>charge_item_master</code></td><td class="no">ใหม่ (เล็ก)</td></tr>
+              <tr><td>charge type <code>fee</code> (แยกจาก service)</td><td class="no">ใหม่ (เล็ก)</td></tr>
+              <tr><td>auto-apply per category (จำนวนแขก/เด็ก/สัตว์ + required)</td><td class="no">ใหม่</td></tr>
+              <tr><td>หน้าจัดการ "เงื่อนไขมีค่าธรรมเนียม" ใน conditions tab</td><td class="no">ใหม่</td></tr>
+              <tr><td>ถอด fee ออกจากฐานมัดจำ (<code>buildBookingCharges</code>)</td><td class="warn">แก้</td></tr>
+              <tr><td><code>bookings.payment_status</code> (สถานะ balance_due)</td><td class="no">ใหม่</td></tr>
+              <tr><td>ย้ายราคา pet/extra-guest package→<code>property_charge_items</code></td><td class="warn">แก้</td></tr>
             </tbody>
           </table></div>
         </div>
       </div>
-      <div class="col-label" style="margin-top:1rem">5 จุดกระทบหนักสุด (อ้างอิงโค้ดจริง)</div>
+      <div class="col-label" style="margin-top:1rem">จุดกระทบหลัก (อ้างอิงโค้ดจริง)</div>
       <div class="table-scroll"><table>
         <thead><tr><th>จุด</th><th>ไฟล์ (จริง)</th><th>ระดับ</th></tr></thead>
         <tbody>
-          <tr><td>สูตรแตกบิล + ฐานมัดจำ + สร้างบิล extra_guest/pet</td><td><code>booking_orchestrator.go:564</code> buildBookingCharges</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td></tr>
-          <tr><td>ยก fee ออกจาก package → ตาราง Fee ใหม่ (domain+repo+service+handler+migration)</td><td><code>property_package.go</code> + property_fees (ใหม่)</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td></tr>
-          <tr><td>pricing อ่าน fee จาก package → จาก Fee</td><td><code>package_rate_service.go:174-208</code></td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td></tr>
-          <tr><td>แก้ fee หลังจอง (void+adjust) — ยังไม่มี path เลย</td><td>greenfield (charges append-only)</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td></tr>
-          <tr><td>หน้าจอ: เอา fee ออกจาก PackagesManager + ปุ่มจ่ายรวมใน FinancePanel</td><td><code>PackagesManager.tsx</code>, <code>BookingFinancePanel.tsx</code></td><td><span class="risk-level medium"><span class="risk-dot medium"></span>กลาง</span></td></tr>
+          <tr><td><b>rename ตาราง+type+wiring (Path B)</b> — service_master→charge_item_master ฯลฯ</td><td>~18 BE + ~14 FE + 2 migration + tests</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง (กว้าง)</span></td></tr>
+          <tr><td>ถอด fee fold ออกจากฐานมัดจำ (เหลือ room อย่างเดียว)</td><td><code>booking_orchestrator.go:565-570</code> buildBookingCharges</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td></tr>
+          <tr><td>หน้าจัดการ "เงื่อนไขมีค่าธรรมเนียม" ใน conditions tab (domain forms ต่อ category)</td><td><code>?tab=content</code> + <code>property_charge_items</code> editor</td><td><span class="risk-level high"><span class="risk-dot high"></span>สูง</span></td></tr>
+          <tr><td>auto-apply fee ตอนจอง per category (qty จากจำนวนแขก/เด็ก/สัตว์ + required) — reuse applier</td><td><code>ChargeItemOrchestrator</code> (เดิม value_added_orchestrator.go:82)</td><td><span class="risk-level medium"><span class="risk-dot medium"></span>กลาง</span></td></tr>
+          <tr><td>เลิกอ่าน fee จาก package → ราคามาจาก charge-item offering</td><td><code>package_rate_service.go:174-208</code></td><td><span class="risk-level medium"><span class="risk-dot medium"></span>กลาง</span></td></tr>
+          <tr><td><code>category</code>+<code>is_system</code> guard + charge type <code>fee</code> + Go constants</td><td><code>charge_item_master</code> + <code>booking_money.go</code></td><td><span class="risk-level low"><span class="risk-dot low"></span>ต่ำ</span></td></tr>
+          <tr><td>หน้าจอ: เอา fee ออกจาก PackagesManager + แสดง fee ใน money-extras/FinancePanel (reuse)</td><td><code>PackagesManager.tsx</code>, <code>BookingFinancePanel.tsx</code></td><td><span class="risk-level medium"><span class="risk-dot medium"></span>กลาง</span></td></tr>
         </tbody>
       </table></div>
-      <div class="note warn"><b>การย้ายข้อมูล (migration):</b> repo ใช้ GORM AutoMigrate + ไฟล์ SQL ตามเวลา (<code>migrations/sql/</code>) — ต้อง: สร้าง <code>property_fees</code> + <b>คัดลอก</b>ราคา fee จาก <code>property_packages</code>; เพิ่ม <code>bookings.payment_status</code>, <code>payment_links</code>. ใช้ <b>วิธี 2 จังหวะ</b> (คัดลอก+อ่านของใหม่ก่อน → ค่อยลบช่องเก่าทีหลัง) เพื่อให้การจองที่ค้างอยู่ไม่คิดราคาใหม่. การจองเก่า = แช่แข็ง (อ่าน snapshot บิลเดิม).</div>
+      <div class="note bad"><b>Rename Impact & Retest Scope (Path B — ต้อง retest กว้าง):</b> <code>charge_item_master</code> (เดิม service_master) <b>ใช้ร่วมกับ catalog subsystem + feature value-added ที่ ship แล้ว</b> → ไม่ใช่แค่ของใหม่. <b>BE ~18:</b> domain/repo (property_service.go, catalog.go, *_repository.go) · service (value_added_service/orchestrator, catalog_service, booking_orchestrator) · handler+router (value_added + catalog) · container/migrate/seed + 2 SQL + tests. <b>FE ~14:</b> ทั้ง module <code>propertyService</code> (types/api/hooks/ServicesEditor) + booking pages/components + properties page. <b>Retest:</b> (1) value-added E2E เดิม (breakfast/transfer: offering CRUD → add to booking → cancel → เงินลงตัว); (2) catalog admin CRUD; (3) booking money (deposit room-only/balance_due/pay-all/reconcile); (4) fee ใหม่ (auto-apply + recompute); (5) migration rename apply+rollback + data intact.</div>
+      <div class="note warn"><b>การย้ายข้อมูล (migration):</b> (1) <code>RENAME TABLE</code> service_master→charge_item_master, property_services→property_charge_items, booking_services→booking_charge_items (+ RENAME COLUMN) — data คงอยู่; (2) <code>ADD category, is_system</code> + seed code พื้นฐาน; (3) data: สร้าง offering pet/extra-guest จาก<b>แพ็กเกจหลัก/ตัวแรก</b>; (4) <code>bookings.payment_status</code>; (5) deferred: ลบช่อง fee เก่าใน package. ⚠️ raw SQL/view/dashboard/JSON key ที่อ้างชื่อเก่าจะพัง → deploy BE+FE พร้อมกัน. การจองเก่า = แช่แข็ง (snapshot บนบิล).</div>
     </section>
 
     <section id="plan">
       <div class="section-head">แผนทำเป็นเฟส (8 เฟส · เรียงตามลำดับพึ่งพา)</div>
       <div class="phases">
         <div class="phase"><div><div class="pt">ตัดสินใจ + ติดสวิตช์</div><div class="pd">PO ตอบคำถามที่ค้าง + ติดสวิตช์เปิด/ปิด (ตั้งต้น = ปิด)</div></div><span class="pe"><span class="eff S">S</span></span></div>
-        <div class="phase"><div><div class="pt">สร้าง "ที่เก็บค่าธรรมเนียม (Fee)" + ย้ายข้อมูล</div><div class="pd">ตาราง <code>property_fees</code> ใหม่ + คัดลอกราคา fee ออกจากแพ็กเกจ (ยังไม่ลบช่องเก่า)</div></div><span class="pe"><span class="eff L">M-L</span></span></div>
-        <div class="phase"><div><div class="pt">แก้สูตรราคา + สูตรมัดจำ <span style="color:var(--accent)">(จุดวัดผลหลัก)</span></div><div class="pd">ราคาเสริมอ่านจาก Fee · มัดจำคิดจากค่าห้องอย่างเดียว → ต้องผ่านทดสอบ "เงินลงตัว" ก่อนไปต่อ</div></div><span class="pe"><span class="eff M">M</span></span></div>
-        <div class="phase"><div><div class="pt">บิล + ประเภทบิลค่าสัตว์</div><div class="pd">สร้างบิล extra_guest / pet แยก (status unpaid → รวมเป็นยอดคงเหลือ; ไม่ต้องมีป้ายใหม่)</div></div><span class="pe"><span class="eff M">M</span></span></div>
-        <div class="phase"><div><div class="pt">ระบบจ่าย 2 งวด (Option B)</div><div class="pd">สถานะ "รอเก็บคงเหลือ" (<code>balance_due</code>) + ลิงก์จ่ายล่วงหน้า + ปุ่ม "ชำระพร้อมกันทั้งหมด"</div></div><span class="pe"><span class="eff L">M-L</span></span></div>
-        <div class="phase"><div><div class="pt">ให้ admin แก้บิลหลังจอง</div><div class="pd">แก้จำนวนสัตว์/แขกเสริม → คิดบิลใหม่แบบลงรายการปรับปรุง (ไม่ลบของเก่า)</div></div><span class="pe"><span class="eff M">M</span></span></div>
-        <div class="phase"><div><div class="pt">ทำหน้าจอ</div><div class="pd">ฟอร์มจัดการ Fee + เอา fee ออกจากหน้าแพ็กเกจ + แยก "มัดจำ / ยอดคงเหลือ" บนหน้าสร้างการจอง + หน้าการเงิน</div></div><span class="pe"><span class="eff L">M-L</span></span></div>
+        <div class="phase"><div><div class="pt">ตั้ง Property Charge Item catalog + ย้ายข้อมูล</div><div class="pd">เพิ่ม <code class="tcell-new">category</code> + <code class="tcell-new">is_system</code> + guard บน catalog + seed code พื้นฐาน + map terms↔charge-item; สร้าง offering ราย-property จากราคาแพ็กเกจหลัก (ยังไม่ลบช่องเก่า)</div></div><span class="pe"><span class="eff M">M</span></span></div>
+        <div class="phase"><div><div class="pt">แก้สูตรราคา + สูตรมัดจำ <span style="color:var(--accent)">(จุดวัดผลหลัก)</span></div><div class="pd">ถอด fee ออกจากฐานมัดจำ (เหลือค่าห้อง) · ราคา fee มาจาก charge item offering → ต้องผ่านทดสอบ "เงินลงตัว" ก่อนไปต่อ</div></div><span class="pe"><span class="eff M">M</span></span></div>
+        <div class="phase"><div><div class="pt">auto-apply per category + charge type fee</div><div class="pd">ใส่บิลอัตโนมัติตาม behavior ของแต่ละ category (occupancy=จำนวนคน, condition=สัตว์, mandatory=cleaning) → charge type <code>fee</code> (reuse AddBookingServiceTx)</div></div><span class="pe"><span class="eff M">M</span></span></div>
+        <div class="phase"><div><div class="pt">ระบบจ่าย 2 งวด (Option B)</div><div class="pd">สถานะ "รอเก็บคงเหลือ" (<code>balance_due</code>) + ปุ่ม "ชำระพร้อมกันทั้งหมด" (เก็บผ่านหน้า "รับเงิน" เดิม)</div></div><span class="pe"><span class="eff M">M</span></span></div>
+        <div class="phase"><div><div class="pt">ให้ admin แก้บิลหลังจอง</div><div class="pd">แก้จำนวน/ราคา = add/cancel charge item (adjustment, append-only) — <b>reuse flow เดิม</b> แทบไม่มีของใหม่</div></div><span class="pe"><span class="eff S">S</span></span></div>
+        <div class="phase"><div><div class="pt">ทำหน้าจอ (domain forms)</div><div class="pd">conditions tab เป็น domain form (Pet/Guest&Child/Visitor/Cleaning/House Rules) ไม่ใช่ generic list + เอา fee ออกจาก package editor + แสดง fee ใน money-extras/หน้าการเงิน (reuse) + แยกมัดจำ/คงเหลือ</div></div><span class="pe"><span class="eff M">M</span></span></div>
         <div class="phase"><div><div class="pt">ย้ายข้อมูล / ทดสอบรวม / ปล่อยใช้</div><div class="pd">ทดสอบทุกเส้นทางเรื่องเงิน + เปิดสวิตช์ทีละลูกค้าองค์กร + (ทีหลัง) ลบช่องราคาเก่าออกจากแพ็กเกจ</div></div><span class="pe"><span class="eff M">M</span></span></div>
       </div>
       <div class="note info">เฟส "ระบบจ่าย 2 งวด" กับ "แก้บิลหลังจอง" ทำขนานกันได้หลังเฟสบิลเสร็จ. รายละเอียดเต็ม: <code>docs/05_Implementation_Plan.md</code>.</div>
@@ -562,7 +620,7 @@
       <div class="table-scroll"><table>
         <thead><tr><th>ความเสี่ยง</th><th>ระดับ</th><th>วิธีคุม</th></tr></thead>
         <tbody>
-          <tr><td>ย้ายค่าธรรมเนียมแล้วการจองเก่าราคาเพี้ยน</td><td class="no">สูง</td><td>การจองเก่าอ่าน snapshot บิลเดิม ไม่ดึงราคาจาก Fee ใหม่; คัดลอก (ไม่ย้าย); ลบช่องเก่าแบบ 2 จังหวะ</td></tr>
+          <tr><td>ย้ายค่าธรรมเนียมแล้วการจองเก่าราคาเพี้ยน</td><td class="no">สูง</td><td>การจองเก่าอ่าน snapshot บิลเดิม (booking_charge_items เก็บ unit_price_snapshot) ไม่ re-lookup ราคาใหม่; คัดลอก (ไม่ย้าย); ลบช่องเก่าแบบ 2 จังหวะ</td></tr>
           <tr><td>เงินไม่ลงตัว (เจ้าของบ้าน+พาร์ทเนอร์+แพลตฟอร์ม ≠ ที่ลูกค้าจ่าย)</td><td class="no">สูง</td><td>ชุดทดสอบเช็กเงินลงตัวทุกบิลเป็น "ด่าน" ก่อนไปเฟสถัดไป</td></tr>
           <tr><td>แก้บิลหลังจองขัดกฎ "เพิ่มอย่างเดียว ห้ามแก้ของเก่า"</td><td class="no">สูง</td><td>คิดใหม่ = ลงรายการปรับปรุง (void + adjustment) ไม่ลบ/แก้ของเดิม; ทดสอบเงินลงตัวหลังแก้</td></tr>
           <tr><td>สถานะ "รอเก็บคงเหลือ" ไม่ครอบทุกกรณี (ยกเลิก/หมดอายุระหว่างนั้น)</td><td class="warn">กลาง</td><td>นิยามการเปลี่ยนสถานะให้ชัดในขั้นออกแบบ; ต่อยอดจากวงจรสถานะเดิม</td></tr>
@@ -578,14 +636,16 @@
       <div class="table-scroll"><table>
         <thead><tr><th>มุมมอง</th><th>วันนี้ (As-Is)</th><th>แบบใหม่ (Option B)</th></tr></thead>
         <tbody>
-          <tr><td>ราคาแขกเสริม/สัตว์อยู่ที่ไหน</td><td class="no">ฝังใน package</td><td class="yes">Fee แยก (property_fees) · admin แก้ได้</td></tr>
+          <tr><td>เก็บค่าธรรมเนียมที่ไหน</td><td class="no">ช่องราคาฝังใน package (เฉพาะ pet/แขกเสริม)</td><td class="yes">Property Charge Item (catalog กลาง + ราคาราย-property) · extensible</td></tr>
+          <tr><td>ชนิด fee ที่รองรับ</td><td class="no">2 (pet, extra-guest)</td><td class="yes">ไม่จำกัด (เด็ก/ผู้มาเยือน/ทำความสะอาด/… เพิ่ม code ได้)</td></tr>
+          <tr><td>extra-guest: capacity vs ราคา</td><td class="no">ปนกันบน package</td><td class="yes">แยก: capacity=package · ราคา=charge item</td></tr>
+          <tr><td>fee ที่มีกฎ (เช่น สัตว์)</td><td class="no">—</td><td class="yes">terms อธิบาย/อ้างอิง charge item (เงินอยู่ที่เดียว)</td></tr>
           <tr><td>มัดจำคิดจาก</td><td class="no">ทุกอย่างรวมกัน (฿11,580)</td><td class="yes">ค่าห้องอย่างเดียว (฿10,200)</td></tr>
-          <tr><td>ค่าสัตว์/แขกเสริม</td><td class="no">จ่ายล่วงหน้าบางส่วน</td><td class="yes">อยู่ในยอดเรียกเก็บคงเหลือ 100%</td></tr>
-          <tr><td>บิลแยกของ extra_guest/pet</td><td class="no">ไม่มี (ปนในมัดจำ/คงเหลือ)</td><td class="yes">แยกบิล (unpaid → อยู่ในยอดคงเหลือ)</td></tr>
-          <tr><td>จ่ายยอดคงเหลือ</td><td class="warn">—</td><td class="yes">ปุ่มเดียว จ่ายทั้งหมดทีเดียว</td></tr>
-          <tr><td>จ่ายล่วงหน้า/ตั้งวันครบกำหนด</td><td class="no">ไม่มี</td><td class="yes">มี (payment_links + due_at)</td></tr>
+          <tr><td>fee เก็บยังไงในบิล</td><td class="no">fold เข้ามัดจำ/คงเหลือ</td><td class="yes">บิล type=<code>fee</code> แยก (unpaid → อยู่ในยอดคงเหลือ 100%)</td></tr>
+          <tr><td>แก้จำนวน/ราคาหลังจอง</td><td class="no">ทำไม่ได้</td><td class="yes">add/cancel charge item (reuse) → recompute append-only</td></tr>
+          <tr><td>จ่ายยอดคงเหลือ</td><td class="warn">—</td><td class="yes">ปุ่มเดียว จ่ายทั้งหมดทีเดียว (หน้ารับเงินเดิม)</td></tr>
           <tr><td>แจ้งเตือนลูกค้า</td><td class="no">ไม่มี</td><td class="no">ไม่มี (ตัดออก)</td></tr>
-          <tr><td>ขนาดงานเทียบ as-is</td><td>— (ของเดิม)</td><td class="no">ใหญ่ (L)</td></tr>
+          <tr><td>ขนาดงานเทียบ as-is</td><td>— (ของเดิม)</td><td class="no">L</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -593,19 +653,20 @@
     <section id="decisions">
       <div class="section-head">สิ่งที่ต้องตัดสินใจ (ก่อนเริ่ม)</div>
       <ul class="decide" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.6rem">
-        <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill due">🔴 สำคัญ</span><span style="font-size:.86rem"><b>Fee อยู่ระดับไหน</b> — ต่อ property หรือต่อ package? (กระทบดีไซน์ตาราง property_fees · CL-10)</span></li>
         <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill due">🔴 สำคัญ</span><span style="font-size:.86rem"><b>การจองที่ค้างอยู่</b> — แช่แข็งราคาเดิมไว้ (แนะนำ) · ใช้สูตรใหม่เฉพาะการจองใหม่ (CL-12 · เสี่ยงเรื่องย้ายข้อมูล)</span></li>
         <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill due">🔴 สำคัญ</span><span style="font-size:.86rem"><b>admin แก้ fee ได้ถึงเมื่อไหร่</b> — แก้ได้ก่อน check-in · หรือหลัง check-in ด้วย? (CL-14)</span></li>
         <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill new">ปานกลาง</span><span style="font-size:.86rem"><b>ปุ่ม "ชำระทั้งหมด"</b> — จ่ายเต็มเท่านั้น หรือจ่ายบางส่วนได้ด้วย? (CL-15)</span></li>
-        <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill new">ปานกลาง</span><span style="font-size:.86rem"><b>คงแยกขนาดสัตว์</b> (เล็ก/ใหญ่) ไว้ไหม หรือรวมเป็นค่าเดียว? (CL-03) · <b>ลบช่องราคาเก่าออกจาก package เมื่อไหร่</b> (2 จังหวะ · CL-16)</span></li>
+        <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill new">ปานกลาง</span><span style="font-size:.86rem"><b>ชุด category สุดท้าย + behavior</b> ยืนยันตามตาราง · <b>โมเดลราคาเด็ก</b> (age-band เท่าไหร่) · <b>ผู้มาเยือน</b> (ต่อจอง/ต่อครั้ง, นับ capacity ไหม)</span></li>
+        <li style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1.05rem;display:flex;gap:.75rem;align-items:flex-start"><span class="pill new">ปานกลาง</span><span style="font-size:.86rem"><b>rename ตาราง DB เป็นกลางตอนนี้เลย หรือ alias ไว้ก่อน</b> (product language = Property Charge Item แน่นอน) · <b>รูปแบบ link terms↔charge-item</b> (FK หรือ charge-item ถือ policy เอง) · <b>ลบช่องราคาเก่าใน package เมื่อไหร่</b> (CL-16)</span></li>
       </ul>
+      <div class="note ok" style="margin-top:.8rem"><b>ตัดสินแล้ว (ไม่ต้องถามอีก):</b> concept = <b>Property Charge Item</b> (ไม่ใช่ "service") reuse <b>billing engine เดียว</b> · <b>terms = policy layer</b> อ้างอิง charge item ไม่เก็บเงินเอง · <b>extra-guest แยก</b> capacity(package)/fee(charge item) · ราคาเก็บ<b>ราย-property</b> (CL-10) · <b>คงสัตว์ เล็ก/ใหญ่</b> 2 code (CL-03) · charge type = <code>fee</code> · <code>category</code> เป็น behavior contract.</div>
       <div class="note info"><b>รายละเอียดเต็ม (เอกสารต้นทาง):</b> <code>docs/03_Impact_Analysis.md</code> (จุดกระทบ + ย้ายข้อมูล), <code>docs/04_Technical_Assessment.md</code> (ดีไซน์ B + schema), <code>docs/05_Implementation_Plan.md</code> (แผนเป็นเฟส), <code>docs/02_Clarification_Log.md</code> (คำถามทั้งหมด), <code>01_Project_Overview.md</code> (สรุป EPIC).</div>
     </section>
   </main>
 </div>
 
 <footer class="wrap">
-  As-Is vs Option B (enhanced) · Code assessment = ใหญ่ (L) · ตัวเลขเป็นตัวอย่างอธิบาย · ชื่อ schema จากโค้ดจริง · แหล่งข้อมูลจริง = ../../docs/*.md
+  Property Charge Items & Deposit Split · Code assessment = L · ตัวเลขเป็นตัวอย่างอธิบาย · ชื่อ schema จากโค้ดจริง · แหล่งข้อมูลจริง = ../../docs/*.md
 </footer>
 
 <script>
